@@ -1,4 +1,4 @@
-package com.fpbinar6.code.controller;
+package com.fpbinar6.code.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
