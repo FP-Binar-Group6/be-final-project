@@ -1,6 +1,7 @@
 package com.fpbinar6.code.services.implementation;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class AirlineServiceImpl implements AirlineService {
 
     @Override
     public Airline getAirlineById(int id) {
-        return null;
+        return airlineRepository.findById(id).orElseThrow();
     }
 
     @Override
@@ -32,12 +33,25 @@ public class AirlineServiceImpl implements AirlineService {
     }
 
     @Override
-    public Airline updateAirline(Airline airline) {
-        return null;
+    public Airline updateAirline(Airline updateAirline) {
+        Optional<Airline> result = airlineRepository.findById(updateAirline.getAirlineId());
+        Airline airline;
+        if(result.isPresent()){
+            airline = result.get();
+            airline.setName(updateAirline.getName());
+            return airlineRepository.save(airline);
+        }
+        else {
+            throw new RuntimeException("Data tidak ditemukan");
+        }
     }
 
     @Override
     public void deleteAirlineById(int id) {
-        
+        Optional<Airline> result = airlineRepository.findById(id);
+        if(result.isEmpty()){
+            throw new RuntimeException("Data tidak ditemukan");
+        }
+        airlineRepository.delete(result.get());
     }
 }
