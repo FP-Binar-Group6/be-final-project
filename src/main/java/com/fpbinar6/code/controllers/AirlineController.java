@@ -40,4 +40,11 @@ public class AirlineController {
         airlineService.updateAirline(airline);
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airline);
     }
+
+    @PostMapping("/")
+    public ResponseEntity<Object> saveAirline(@RequestBody Airline airline){
+        airlineService.saveAirline(airline);
+        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airline);
+    }
+
 }

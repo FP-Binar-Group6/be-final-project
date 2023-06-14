@@ -7,17 +7,19 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "airline")
+@Table(name = "class")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Airline {
-    
+public class Class {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",nullable = false)
-    private int airlineId;
+    private int classId;
 
     @Column(name = "name",nullable = false)
     private String name;
 
+    @Column(name = "price",nullable = false)
+    private int price;
 }
