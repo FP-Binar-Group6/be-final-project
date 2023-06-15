@@ -30,7 +30,7 @@ public class ClassController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deteletClassById(@PathVariable("id") int id){
+    public ResponseEntity<Object> deleteClassById(@PathVariable("id") int id){
         classService.deleteClassById(id);
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, id);
     }
