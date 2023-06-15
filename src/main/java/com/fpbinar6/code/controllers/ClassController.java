@@ -1,8 +1,6 @@
 package com.fpbinar6.code.controllers;
 
-import com.fpbinar6.code.models.Airline;
 import com.fpbinar6.code.models.Class;
-import com.fpbinar6.code.services.AirlineService;
 import com.fpbinar6.code.services.ClassService;
 import com.fpbinar6.code.utils.Constants;
 import com.fpbinar6.code.utils.ResponseHandler;
