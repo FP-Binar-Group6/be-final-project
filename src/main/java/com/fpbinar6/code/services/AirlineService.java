@@ -3,7 +3,6 @@ package com.fpbinar6.code.services;
 import java.util.List;
 
 import com.fpbinar6.code.models.Airline;
-import com.fpbinar6.code.models.User;
 
 public interface AirlineService {
 
