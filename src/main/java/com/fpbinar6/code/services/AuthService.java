@@ -1,6 +1,5 @@
 package com.fpbinar6.code.services;
 
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.fpbinar6.code.repository.UserRepository;

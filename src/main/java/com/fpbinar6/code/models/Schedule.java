@@ -2,6 +2,8 @@ package com.fpbinar6.code.models;
 
 import java.sql.Timestamp;
 
+import com.fpbinar6.code.models.dto.ScheduleResponseDTO;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,6 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "schedule")
 public class Schedule {
     
@@ -44,4 +48,15 @@ public class Schedule {
     @JoinColumn(name = "airline_id", referencedColumnName = "id")
     @OneToOne(targetEntity = Airline.class, cascade = CascadeType.ALL)
     private Airline airline;
+
+    public ScheduleResponseDTO convertToResponse(){
+        return ScheduleResponseDTO.builder()
+                .scheduleId(this.scheduleId)
+                .departureTime(this.departureTime)
+                .arrivalTime(this.arrivalTime)
+                .departureAirport(this.departureAirport)
+                .arrivalAirport(this.arrivalAirport)
+                .airline(this.airline)
+                .build();
+    }
 }

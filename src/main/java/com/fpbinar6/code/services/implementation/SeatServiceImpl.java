@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.fpbinar6.code.models.Seat;
+import com.fpbinar6.code.models.dto.SeatRequestDTO;
+import com.fpbinar6.code.models.dto.SeatResponseDTO;
+import com.fpbinar6.code.repository.ClassRepository;
+import com.fpbinar6.code.repository.ScheduleRepository;
 import com.fpbinar6.code.repository.SeatRepository;
 import com.fpbinar6.code.services.SeatService;
 
@@ -15,25 +18,39 @@ import lombok.RequiredArgsConstructor;
 public class SeatServiceImpl implements SeatService{
     
     final SeatRepository seatRepository;
+    final ScheduleRepository scheduleRepository;
+    final ClassRepository classRepository;
     
     @Override
-    public List<Seat> getAllSeat() {
-        return seatRepository.findAll();
+    public List<SeatResponseDTO> getAllSeat() {
+        var seats = seatRepository.findAll();
+        return seats.stream().map(seat -> {
+            return seat.convertToResponse();
+        }).toList();
     }
 
     @Override
-    public List<Seat> getSeatByScheduleId(int scheduleId) {
-        return seatRepository.findByScheduleId(scheduleId);
+    public List<SeatResponseDTO> getSeatByScheduleId(int scheduleId) {
+        var seats = seatRepository.findByScheduleId(scheduleId);
+        return seats.stream().map(seat -> {
+            return seat.convertToResponse();
+        }).toList();
     }
 
     @Override
-    public Seat getSeatById(int id) {
-        return seatRepository.findById(id).get();
+    public SeatResponseDTO getSeatById(int id) {
+        var seat = seatRepository.findById(id);
+        return seat.get().convertToResponse();
     }
 
     @Override
-    public Seat saveSeat(Seat seat) {
-        return seatRepository.save(seat);
+    public SeatResponseDTO saveSeat(SeatRequestDTO seatRequest) {
+        var schedule = scheduleRepository.findById(seatRequest.getScheduleId()).orElseThrow(() -> new RuntimeException("Schedule not found"));
+        var kelas = classRepository.findById(seatRequest.getClassId()).orElseThrow(() -> new RuntimeException("Class not found"));
+        var seat = seatRequest.toSeat(kelas, schedule);
+        var result = seatRepository.save(seat);
+
+        return result.convertToResponse();
     }
 
 }
