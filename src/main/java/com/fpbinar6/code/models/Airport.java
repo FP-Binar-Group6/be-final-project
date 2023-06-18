@@ -1,5 +1,7 @@
 package com.fpbinar6.code.models;
 
+import java.io.Serializable;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,10 +12,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "airport")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Airport {
+public class Airport implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false)
+    @Column(name = "id",nullable = false, unique = true)
     private int airportId;
 
     @Column(name = "name",nullable = false)

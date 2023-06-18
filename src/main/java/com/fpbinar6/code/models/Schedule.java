@@ -38,15 +38,15 @@ public class Schedule {
     private Timestamp arrivalTime;
 
     @JoinColumn(name = "departure_airport_id", referencedColumnName = "id")
-    @OneToOne(targetEntity = Airport.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Airport.class, cascade = CascadeType.MERGE)
     private Airport departureAirport;
 
     @JoinColumn(name = "arrival_airport_id", referencedColumnName = "id")
-    @OneToOne(targetEntity = Airport.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Airport.class, cascade = CascadeType.MERGE)
     private Airport arrivalAirport;
 
     @JoinColumn(name = "airline_id", referencedColumnName = "id")
-    @OneToOne(targetEntity = Airline.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Airline.class, cascade = CascadeType.MERGE)
     private Airline airline;
 
     public ScheduleResponseDTO convertToResponse(){

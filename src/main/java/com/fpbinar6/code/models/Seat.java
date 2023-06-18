@@ -36,11 +36,11 @@ public class Seat {
     private boolean isPicked;
 
     @JoinColumn(name = "class_id", referencedColumnName = "id")
-    @OneToOne(targetEntity = Class.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Class.class, cascade = CascadeType.MERGE)
     private Class kelas;
 
     @JoinColumn(name = "schedule_id", referencedColumnName = "id")
-    @OneToOne(targetEntity = Schedule.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Schedule.class, cascade = CascadeType.MERGE)
     private Schedule schedule;
 
     public SeatResponseDTO convertToResponse(){
