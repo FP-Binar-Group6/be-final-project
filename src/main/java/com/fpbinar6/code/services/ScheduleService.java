@@ -9,5 +9,6 @@ import com.fpbinar6.code.models.dto.ScheduleResponseDTO;
 public interface ScheduleService {
     List<ScheduleResponseDTO> getAllSchedule();
     ScheduleResponseDTO getScheduleById(int id);
-    ScheduleResponseDTO saveSchedule(ScheduleRequestDTO ScheduleRequest);
+    void deleteScheduleById(int id);
+    ScheduleResponseDTO saveSchedule(ScheduleRequestDTO scheduleRequest);
 }
