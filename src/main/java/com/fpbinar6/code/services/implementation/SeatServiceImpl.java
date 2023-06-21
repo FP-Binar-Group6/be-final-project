@@ -30,8 +30,8 @@ public class SeatServiceImpl implements SeatService{
     }
 
     @Override
-    public List<SeatResponseDTO> getSeatByScheduleId(int scheduleId) {
-        var seats = seatRepository.findByScheduleId(scheduleId);
+    public List<SeatResponseDTO> getSeatByScheduleId(int id) {
+        var seats = seatRepository.findByScheduleId(id);
         return seats.stream().map(seat -> {
             return seat.convertToResponse();
         }).toList();
@@ -48,6 +48,7 @@ public class SeatServiceImpl implements SeatService{
         var schedule = scheduleRepository.findById(seatRequest.getScheduleId()).orElseThrow(() -> new RuntimeException("Schedule not found"));
         var kelas = classRepository.findById(seatRequest.getClassId()).orElseThrow(() -> new RuntimeException("Class not found"));
         var seat = seatRequest.toSeat(kelas, schedule);
+        seat.setPicked(false);
         var result = seatRepository.save(seat);
 
         return result.convertToResponse();

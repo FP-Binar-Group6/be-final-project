@@ -9,6 +9,6 @@ import com.fpbinar6.code.models.Seat;
 
 public interface SeatRepository extends JpaRepository<Seat, Integer> {
     
-    @Query(value = "SELECT * FROM public.seat WHERE schedule_id = :schedule_id", nativeQuery = true)
-    List<Seat> findByScheduleId(@Param("schedule_id") int scheduleId);
+    @Query(value = "SELECT * FROM public.seat s WHERE s.schedule_id = :id", nativeQuery = true)
+    List<Seat> findByScheduleId(int id);
 }

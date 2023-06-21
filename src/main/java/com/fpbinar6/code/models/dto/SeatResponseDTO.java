@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 public class SeatResponseDTO {
     private int seatId;
     private String seatNumber;
-    private Schedule schedule;
     private Class kelas;
     private boolean isPicked;
 }

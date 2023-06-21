@@ -48,7 +48,6 @@ public class Seat {
                 .seatId(this.seatId)
                 .seatNumber(this.seatNumber)
                 .kelas(this.kelas)
-                .schedule(this.schedule)
                 .isPicked(this.isPicked)
                 .build();
     }
