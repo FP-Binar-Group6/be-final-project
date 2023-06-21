@@ -41,7 +41,7 @@ public class SeatController {
     }
 
     @GetMapping("/schedule")
-    public ResponseEntity<Object> getSeatByScheduleId(@RequestParam int scheduleId) {
+    public ResponseEntity<Object> getSeatByScheduleId(@RequestParam("schedule_id") int scheduleId) {
         try {
             var seat = seatService.getSeatByScheduleId(scheduleId);
             return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, seat);
