@@ -23,26 +23,49 @@ public class ClassController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getClassById(@PathVariable("id") int id) {
-        var kelas = classService.getClassById(id);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, kelas);
+
+        try {
+            var kelas = classService.getClassById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, kelas);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_RETRIEVE_MSG, HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteClassById(@PathVariable("id") int id){
-        classService.deleteClassById(id);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, id);
+
+        try {
+            classService.deleteClassById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_DELETE_MSG, HttpStatus.OK, id);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_DELETE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
     @PutMapping("/")
     public ResponseEntity<Object> updateClass(@RequestBody Class kelas) {
-        classService.updateClass(kelas);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, kelas);
+
+        try {
+            classService.updateClass(kelas);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_EDIT_MSG, HttpStatus.OK, kelas);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_EDIT_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
     @PostMapping("/")
     public ResponseEntity<Object> saveClass(@RequestBody Class kelas){
-        classService.saveClass(kelas);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, kelas);
+        try {
+            classService.saveClass(kelas);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, kelas);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
 }

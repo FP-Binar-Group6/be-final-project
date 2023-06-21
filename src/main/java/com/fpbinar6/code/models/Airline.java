@@ -22,4 +22,10 @@ public class Airline implements Serializable{
     @Column(name = "name",nullable = false)
     private String name;
 
+    @Column(name = "image",nullable = true)
+    private String image;
+
+    @Column(name = "iata", nullable = false)
+    private String iata;
+
 }

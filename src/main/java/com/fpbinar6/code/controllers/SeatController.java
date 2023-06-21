@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fpbinar6.code.models.dto.SeatRequestDTO;
@@ -24,24 +25,41 @@ public class SeatController {
 
     @GetMapping("/")
     public ResponseEntity<Object> getAllSeat() {
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, seatService.getAllSeat());
+        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK,
+                seatService.getAllSeat());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getSeatById(@PathVariable("id") int id) {
-        var seat = seatService.getSeatById(id);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, seat);
+        try {
+            var seat = seatService.getSeatById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, seat);
+
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_RETRIEVE_MSG, HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
-    @GetMapping("/schedule/{scheduleId}")
-    public ResponseEntity<Object> getSeatByScheduleId(@PathVariable("scheduleId") int scheduleId) {
-        var seat = seatService.getSeatByScheduleId(scheduleId);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, seat);
+    @GetMapping("/schedule")
+    public ResponseEntity<Object> getSeatByScheduleId(@RequestParam int scheduleId) {
+        try {
+            var seat = seatService.getSeatByScheduleId(scheduleId);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, seat);
+
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_RETRIEVE_MSG, HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
     @PostMapping("/")
-    public ResponseEntity<Object> saveSeat(@RequestBody SeatRequestDTO seatRequest){
-        seatService.saveSeat(seatRequest);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, seatRequest);
+    public ResponseEntity<Object> saveSeat(@RequestBody SeatRequestDTO seatRequest) {
+
+        try {
+            seatService.saveSeat(seatRequest);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, seatRequest);
+
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 }

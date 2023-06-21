@@ -26,20 +26,35 @@ public class ScheduleController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getScheduleById(@PathVariable("id") int id) {
-        var schedule = scheduleService.getScheduleById(id);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, schedule);
+        try {
+            var schedule = scheduleService.getScheduleById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, schedule);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_RETRIEVE_MSG, HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteScheduleById(@PathVariable("id") int id){
-        scheduleService.deleteScheduleById(id);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, id);
+        try {
+            scheduleService.deleteScheduleById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_DELETE_MSG, HttpStatus.OK, id);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_DELETE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
     @PostMapping("/")
     public ResponseEntity<Object> saveSchedule(@RequestBody ScheduleRequestDTO scheduleRequest){
-        scheduleService.saveSchedule(scheduleRequest);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, scheduleRequest);
+        try {
+            scheduleService.saveSchedule(scheduleRequest);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, scheduleRequest);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
 }

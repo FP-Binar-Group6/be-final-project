@@ -22,25 +22,47 @@ public class AirportController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getAirportById(@PathVariable("id") int id) {
-        var airport = airportService.getAirportById(id);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airport);
+
+        try {
+            var airport = airportService.getAirportById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airport);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_RETRIEVE_MSG, HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteAirportById(@PathVariable("id") int id){
-        airportService.deleteAirportById(id);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, id);
+        try {
+            airportService.deleteAirportById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_DELETE_MSG, HttpStatus.OK, id);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_DELETE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
     @PutMapping("/")
     public ResponseEntity<Object> updateAirport(@RequestBody Airport airport) {
-        airportService.updateAirport(airport);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airport);
+        try {
+            airportService.updateAirport(airport);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_EDIT_MSG, HttpStatus.OK, airport);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_EDIT_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+
     }
 
     @PostMapping("/")
     public ResponseEntity<Object> saveAirport(@RequestBody Airport airport){
-        airportService.saveAirport(airport);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airport);
+        try {
+            airportService.saveAirport(airport);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, airport);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 }
