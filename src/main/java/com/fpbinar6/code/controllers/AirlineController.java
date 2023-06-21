@@ -25,26 +25,46 @@ public class AirlineController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getAirlineById(@PathVariable("id") int id) {
-        var airline = airlineService.getAirlineById(id);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airline);
+        try {
+            var airline = airlineService.getAirlineById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airline);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_RETRIEVE_MSG, HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deteletAirlineById(@PathVariable("id") int id){
-        airlineService.deleteAirlineById(id);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, id);
+
+        try {
+            airlineService.deleteAirlineById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_DELETE_MSG, HttpStatus.OK, id);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_DELETE_MSG, HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
     @PutMapping("/")
     public ResponseEntity<Object> updateAirline(@RequestBody Airline airline){
-        airlineService.updateAirline(airline);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airline);
+        try {
+            airlineService.updateAirline(airline);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_EDIT_MSG, HttpStatus.OK, airline);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_EDIT_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
     @PostMapping("/")
     public ResponseEntity<Object> saveAirline(@RequestBody Airline airline){
-        airlineService.saveAirline(airline);
-        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airline);
+        try {
+            airlineService.saveAirline(airline);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, airline);
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 
 }

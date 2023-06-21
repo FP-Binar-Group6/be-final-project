@@ -21,7 +21,7 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
 
     @Override
     public PaymentMethod getPaymentMethodById(int id) {
-        return paymentMethodRepository.findById(id).orElseThrow();
+        return paymentMethodRepository.findById(id).orElseThrow(() -> new RuntimeException("Data tidak ditemukan"));
     }
 
     @Override
