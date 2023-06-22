@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,7 +48,7 @@ public class Ticket {
     @Column(name = "id_card_number",nullable = false)
     private String idCardNumber;
 
-    @JoinColumn(name = "schedule_id", referencedColumnName = "id")
-    @ManyToOne(targetEntity = Schedule.class, cascade = CascadeType.MERGE)
-    private Schedule schedule;
+    @JoinColumn(name = "seat_id", referencedColumnName = "id")
+    @OneToOne(targetEntity = Seat.class, cascade = CascadeType.MERGE)
+    private Seat seat;
 }

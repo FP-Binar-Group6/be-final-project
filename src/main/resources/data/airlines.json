@@ -1,0 +1,37 @@
+[
+  {
+    "iata": "GA",
+    "name": "Garuda Indonesia",
+    "image": "https://pics.avs.io/200/200/GA@2x.png"
+  },
+  {
+    "iata": "JT",
+    "name": "Lion Air",
+    "image": "https://pics.avs.io/200/200/JT@2x.png"
+  },
+  {
+    "iata": "ID",
+    "name": "Batik Air",
+    "image": "https://pics.avs.io/200/200/ID@2x.png"
+  },
+  {
+    "iata": "QZ",
+    "name": "AirAsia Indonesia",
+    "image": "https://pics.avs.io/200/200/QZ@2x.png"
+  },
+  {
+    "iata": "SJ",
+    "name": "Sriwijaya Air",
+    "image": "https://pics.avs.io/200/200/SJ@2x.png"
+  },
+  {
+    "iata": "IN",
+    "name": "Nam Air",
+    "image": "https://pics.avs.io/200/200/IN@2x.png"
+  },
+  {
+    "iata": "QG",
+    "name": "Citilink",
+    "image": "https://pics.avs.io/200/200/QG@2x.png"
+  }
+]

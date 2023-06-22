@@ -17,14 +17,12 @@ public class SeatRequestDTO {
     private String seatNumber;
     private int scheduleId;
     private int classId;
-    private boolean isPicked;
 
     public Seat toSeat(Class kelas, Schedule schedule){
         return Seat.builder()
                 .kelas(kelas)
                 .schedule(schedule)
                 .seatNumber(this.seatNumber)
-                .isPicked(this.isPicked)
                 .build();
     }
 
