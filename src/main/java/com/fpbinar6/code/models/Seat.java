@@ -9,7 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,12 +35,12 @@ public class Seat {
     @Column(name = "is_picked")
     private boolean isPicked;
 
-    @JoinColumn(name = "class_id", referencedColumnName = "id")
-    @OneToOne(targetEntity = Class.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false, unique = false)
+    @ManyToOne(targetEntity = Class.class, cascade = CascadeType.MERGE)
     private Class kelas;
 
-    @JoinColumn(name = "schedule_id", referencedColumnName = "id")
-    @OneToOne(targetEntity = Schedule.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "schedule_id", referencedColumnName = "id", nullable = false, unique = false)
+    @ManyToOne(targetEntity = Schedule.class, cascade = CascadeType.MERGE)
     private Schedule schedule;
 
     public SeatResponseDTO convertToResponse(){
