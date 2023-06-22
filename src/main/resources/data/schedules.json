@@ -1,0 +1,23 @@
+[
+    {
+        "departureTime": "2023-01-07T21:05:06.000+00:00",
+        "arrivalTime": "2023-01-07T22:05:06.000+00:00",
+        "departureAirportId": 2,
+        "arrivalAirportId": 1,
+        "airlineId": 1
+    },
+    {
+        "departureTime": "2023-01-08T21:05:06.000+00:00",
+        "arrivalTime": "2023-01-08T22:05:06.000+00:00",
+        "departureAirportId": 2,
+        "arrivalAirportId": 1,
+        "airlineId": 1
+    },
+    {
+        "departureTime": "2023-01-09T21:05:06.000+00:00",
+        "arrivalTime": "2023-01-09T22:05:06.000+00:00",
+        "departureAirportId": 2,
+        "arrivalAirportId": 1,
+        "airlineId": 1
+    }
+]
