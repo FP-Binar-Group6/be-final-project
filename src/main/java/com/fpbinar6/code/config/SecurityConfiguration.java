@@ -22,7 +22,6 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.exceptionHandling().authenticationEntryPoint(new Http403ForbiddenEntryPoint());
         httpSecurity
                 .csrf()
                 .disable()
