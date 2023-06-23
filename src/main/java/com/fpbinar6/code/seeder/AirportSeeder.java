@@ -10,7 +10,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -31,20 +33,26 @@ public class AirportSeeder implements CommandLineRunner {
     }
 
     private void seedAirportData() throws IOException {
-         // Define the relative path to the JSON file
-        String jsonFilePath = "data/airports.json";
+    // Define the relative path to the JSON file
+    String jsonFilePath = "data/airports.json";
 
-        // Read the JSON file
-        Path path = new ClassPathResource(jsonFilePath).getFile().toPath();
-        String jsonContent = Files.readString(path);
+    // Read the JSON file from the classpath
+    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
 
-        // Create an ObjectMapper instance
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        // Map the JSON content to a list of Airline objects
-        List<Airport> airports = objectMapper.readValue(jsonContent, new TypeReference<List<Airport>>() {});
-
-        // Save the airlines to the database
-        airportRepository.saveAll(airports);
+    if (inputStream == null) {
+        throw new FileNotFoundException("JSON file not found: " + jsonFilePath);
     }
+
+    // Create an ObjectMapper instance
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    // Map the JSON content to a list of Airport objects
+    List<Airport> airports = objectMapper.readValue(inputStream, new TypeReference<List<Airport>>() {});
+
+    // Save the airports to the database
+    airportRepository.saveAll(airports);
+
+    inputStream.close();
+}
+
 }

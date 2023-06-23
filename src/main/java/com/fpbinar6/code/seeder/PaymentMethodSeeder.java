@@ -9,7 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -29,20 +31,26 @@ public class PaymentMethodSeeder implements CommandLineRunner {
     }
 
     private void seedClassData() throws IOException {
-        // Define the relative path to the JSON file
-        String jsonFilePath = "data/payment_method.json";
+    // Define the relative path to the JSON file
+    String jsonFilePath = "data/payment_method.json";
 
-        // Read the JSON file
-        Path path = new ClassPathResource(jsonFilePath).getFile().toPath();
-        String jsonContent = Files.readString(path);
+    // Read the JSON file from the classpath
+    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
 
-        // Create an ObjectMapper instance
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        // Map the JSON content to a list of Airline objects
-        List<PaymentMethod> paymentMethods = objectMapper.readValue(jsonContent, new TypeReference<List<PaymentMethod>>() {});
-
-        // Save the airlines to the database
-        paymentMethodRepository.saveAll(paymentMethods);
+    if (inputStream == null) {
+        throw new FileNotFoundException("JSON file not found: " + jsonFilePath);
     }
+
+    // Create an ObjectMapper instance
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    // Map the JSON content to a list of PaymentMethod objects
+    List<PaymentMethod> paymentMethods = objectMapper.readValue(inputStream, new TypeReference<List<PaymentMethod>>() {});
+
+    // Save the payment methods to the database
+    paymentMethodRepository.saveAll(paymentMethods);
+
+    inputStream.close();
+}
+
 }
