@@ -9,7 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -30,20 +32,26 @@ public class ClassSeeder implements CommandLineRunner {
     }
 
     private void seedClassData() throws IOException {
-        // Define the relative path to the JSON file
-        String jsonFilePath = "data/class.json";
+    // Define the relative path to the JSON file
+    String jsonFilePath = "data/class.json";
 
-        // Read the JSON file
-        Path path = new ClassPathResource(jsonFilePath).getFile().toPath();
-        String jsonContent = Files.readString(path);
+    // Read the JSON file from the classpath
+    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
 
-        // Create an ObjectMapper instance
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        // Map the JSON content to a list of Airline objects
-        List<Class> classes = objectMapper.readValue(jsonContent, new TypeReference<List<Class>>() {});
-
-        // Save the airlines to the database
-        classRepository.saveAll(classes);
+    if (inputStream == null) {
+        throw new FileNotFoundException("JSON file not found: " + jsonFilePath);
     }
+
+    // Create an ObjectMapper instance
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    // Map the JSON content to a list of Class objects
+    List<Class> classes = objectMapper.readValue(inputStream, new TypeReference<List<Class>>() {});
+
+    // Save the classes to the database
+    classRepository.saveAll(classes);
+
+    inputStream.close();
+}
+
 }
