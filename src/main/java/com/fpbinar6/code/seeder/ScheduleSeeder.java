@@ -69,7 +69,7 @@ public class ScheduleSeeder implements CommandLineRunner {
         Schedule schedule = scheduleDTO.toSchedule(departureAirport, arrivalAirport, airline);
 
         // Save the Schedule instance to the database
-        scheduleRepository.save(schedule);
+        scheduleRepository.save(schedule);  
     }
 
     inputStream.close();
