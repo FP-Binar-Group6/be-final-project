@@ -12,8 +12,8 @@ import com.fpbinar6.code.repository.ScheduleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
@@ -35,9 +35,6 @@ public class ScheduleSeeder implements CommandLineRunner {
         this.scheduleRepository = scheduleRepository;
     }
 
-    @Autowired
-    private ResourceLoader resourceLoader;
-
     @Override
     public void run(String... args) throws Exception {
         seedScheduleData();
@@ -48,7 +45,7 @@ public class ScheduleSeeder implements CommandLineRunner {
     String jsonFilePath = "data/schedules.json";
 
     // Read the JSON file from the classpath
-    Resource resource = resourceLoader.getResource(jsonFilePath);
+    Resource resource = new ClassPathResource(jsonFilePath);
     InputStream inputStream = resource.getInputStream();
 
     if (inputStream == null) {
