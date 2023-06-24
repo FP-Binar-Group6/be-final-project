@@ -12,14 +12,13 @@ import com.fpbinar6.code.repository.ScheduleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
 
 @Component
@@ -36,6 +35,9 @@ public class ScheduleSeeder implements CommandLineRunner {
         this.scheduleRepository = scheduleRepository;
     }
 
+    @Autowired
+    private ResourceLoader resourceLoader;
+
     @Override
     public void run(String... args) throws Exception {
         seedScheduleData();
@@ -46,7 +48,8 @@ public class ScheduleSeeder implements CommandLineRunner {
     String jsonFilePath = "data/schedules.json";
 
     // Read the JSON file from the classpath
-    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
+    Resource resource = resourceLoader.getResource(jsonFilePath);
+    InputStream inputStream = resource.getInputStream();
 
     if (inputStream == null) {
         throw new FileNotFoundException("JSON file not found: " + jsonFilePath);
