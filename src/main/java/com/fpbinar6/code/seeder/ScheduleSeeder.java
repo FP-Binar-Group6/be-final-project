@@ -12,6 +12,7 @@ import com.fpbinar6.code.repository.ScheduleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,7 @@ import java.io.InputStream;
 import java.util.List;
 
 @Component
+@Order(3)
 public class ScheduleSeeder implements CommandLineRunner {
 
     private final AirportRepository airportRepository;
