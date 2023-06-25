@@ -16,13 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ScheduleRequestDTO {
-    private Timestamp departureTime;
-    private Timestamp arrivalTime;
+     Timestamp departureTime;
+     Timestamp arrivalTime;
     private int departureAirportId;
     private int arrivalAirportId;
     private int airlineId;
 
-    public Schedule toSchedule(Airport departureAirport, Airport arrivalAirport, Airline airline){
+    public Schedule toSchedule(Airport departureAirport, Airport arrivalAirport, Airline airline) {
         return Schedule.builder()
                 .departureTime(this.departureTime)
                 .arrivalTime(this.arrivalTime)
@@ -31,4 +31,6 @@ public class ScheduleRequestDTO {
                 .airline(airline)
                 .build();
     }
+
+    
 }

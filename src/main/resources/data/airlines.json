@@ -1,35 +1,42 @@
 [
   {
+    "airlineId": 1,
     "iata": "GA",
     "name": "Garuda Indonesia",
     "image": "https://pics.avs.io/200/200/GA@2x.png"
   },
   {
+    "airlineId": 2,
     "iata": "JT",
     "name": "Lion Air",
     "image": "https://pics.avs.io/200/200/JT@2x.png"
   },
   {
+    "airlineId": 3,
     "iata": "ID",
     "name": "Batik Air",
     "image": "https://pics.avs.io/200/200/ID@2x.png"
   },
   {
+    "airlineId": 4,
     "iata": "QZ",
     "name": "AirAsia Indonesia",
     "image": "https://pics.avs.io/200/200/QZ@2x.png"
   },
   {
+    "airlineId": 5,
     "iata": "SJ",
     "name": "Sriwijaya Air",
     "image": "https://pics.avs.io/200/200/SJ@2x.png"
   },
   {
+    "airlineId": 6,
     "iata": "IN",
     "name": "Nam Air",
     "image": "https://pics.avs.io/200/200/IN@2x.png"
   },
   {
+    "airlineId": 7,
     "iata": "QG",
     "name": "Citilink",
     "image": "https://pics.avs.io/200/200/QG@2x.png"

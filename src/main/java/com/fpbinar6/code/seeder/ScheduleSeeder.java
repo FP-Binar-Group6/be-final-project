@@ -6,6 +6,7 @@ import com.fpbinar6.code.models.Airline;
 import com.fpbinar6.code.models.Airport;
 import com.fpbinar6.code.models.Schedule;
 import com.fpbinar6.code.models.dto.ScheduleRequestDTO;
+import com.fpbinar6.code.models.dto.ScheduleSeederDTO;
 import com.fpbinar6.code.repository.AirlineRepository;
 import com.fpbinar6.code.repository.AirportRepository;
 import com.fpbinar6.code.repository.ScheduleRepository;
@@ -58,23 +59,35 @@ public class ScheduleSeeder implements CommandLineRunner {
     ObjectMapper objectMapper = new ObjectMapper();
 
     // Map the JSON content to a list of ScheduleRequestDTO objects
-    List<ScheduleRequestDTO> scheduleDTOs = objectMapper.readValue(inputStream, new TypeReference<List<ScheduleRequestDTO>>() {});
+    List<ScheduleSeederDTO> scheduleDTOs = objectMapper.readValue(inputStream, new TypeReference<List<ScheduleSeederDTO>>() {});
 
-    // Iterate through the ScheduleRequestDTO list and save the schedules to the database
-    for (ScheduleRequestDTO scheduleDTO : scheduleDTOs) {
+    // Iterate through the ScheduleRequestDTO list and save/update the schedules in the database
+    for (ScheduleSeederDTO scheduleDTO : scheduleDTOs) {
         // Retrieve Airport and Airline instances using their IDs from the ScheduleRequestDTO
         Airport departureAirport = airportRepository.findById(scheduleDTO.getDepartureAirportId()).orElse(null);
         Airport arrivalAirport = airportRepository.findById(scheduleDTO.getArrivalAirportId()).orElse(null);
         Airline airline = airlineRepository.findById(scheduleDTO.getAirlineId()).orElse(null);
 
-        // Create Schedule instance using the ScheduleRequestDTO and related models
-        Schedule schedule = scheduleDTO.toSchedule(departureAirport, arrivalAirport, airline);
+        // Check if a schedule with the same ID exists in the database
+        int scheduleId = scheduleDTO.getScheduleId();
+        Schedule existingSchedule = scheduleRepository.findById(scheduleId).orElse(null);
+
+        // Create or update the Schedule instance based on the existence of the schedule in the database
+        Schedule schedule;
+        if (existingSchedule != null) {
+            // Update the existing schedule
+            schedule = scheduleDTO.toSchedule(existingSchedule, departureAirport, arrivalAirport, airline);
+        } else {
+            // Create a new schedule
+            schedule = scheduleDTO.toSchedule(departureAirport, arrivalAirport, airline);
+        }
 
         // Save the Schedule instance to the database
-        scheduleRepository.save(schedule);  
+        scheduleRepository.save(schedule);
     }
 
     inputStream.close();
 }
+
 
 }

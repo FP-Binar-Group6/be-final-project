@@ -1,17 +1,22 @@
 [
   {
+    "paymentMethodId" : 1,
     "name" : "Credit Card"
   },
   {
+    "paymentMethodId" : 2,
     "name" : "Debit Card"
   },
   {
+    "paymentMethodId" : 3,
     "name" : "Paypal"
   },
   {
+    "paymentMethodId" : 4,
     "name" : "Bank Transfer"
   },
   {
+    "paymentMethodId" : 5,
     "name" :  "Mobile Wallet"
   }
 ]

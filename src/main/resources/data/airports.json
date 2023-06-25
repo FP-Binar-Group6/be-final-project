@@ -1,43 +1,50 @@
 [
-    {
-      "code": "CGK",
-      "cityName": "Jakarta",
-      "name": "Soekarno-Hatta International Airport"
-    },
-    {
-      "code": "DPS",
-      "cityName": "Denpasar",
-      "name": "Ngurah Rai International Airport"
-    },
-    {
-      "code": "SUB",
-      "cityName": "Surabaya",
-      "name": "Juanda International Airport"
-    },
-    {
-      "code": "BDO",
-      "cityName": "Bandung",
-      "name": "Husein Sastranegara International Airport"
-    },
-    {
-      "code": "SRG",
-      "cityName": "Semarang",
-      "name": "Achmad Yani International Airport"
-    },
-    {
-      "code": "MDC",
-      "cityName": "Manado",
-      "name": "Sam Ratulangi International Airport"
-    },
-    {
-      "code": "JOG",
-      "cityName": "Yogyakarta",
-      "name": "Adisutjipto International Airport"
-    },
-    {
-      "code": "UPG",
-      "cityName": "Makassar",
-      "name": "Sultan Hasanuddin International Airport"
-    }
+  {
+    "airportId": 1,
+    "code": "CGK",
+    "cityName": "Jakarta",
+    "name": "Soekarno-Hatta International Airport"
+  },
+  {
+    "airportId": 2,
+    "code": "DPS",
+    "cityName": "Denpasar",
+    "name": "Ngurah Rai International Airport"
+  },
+  {
+    "airportId": 3,
+    "code": "SUB",
+    "cityName": "Surabaya",
+    "name": "Juanda International Airport"
+  },
+  {
+    "airportId": 4,
+    "code": "BDO",
+    "cityName": "Bandung",
+    "name": "Husein Sastranegara International Airport"
+  },
+  {
+    "airportId": 5,
+    "code": "SRG",
+    "cityName": "Semarang",
+    "name": "Achmad Yani International Airport"
+  },
+  {
+    "airportId": 6,
+    "code": "MDC",
+    "cityName": "Manado",
+    "name": "Sam Ratulangi International Airport"
+  },
+  {
+    "airportId": 7,
+    "code": "JOG",
+    "cityName": "Yogyakarta",
+    "name": "Adisutjipto International Airport"
+  },
+  {
+    "airportId": 8,
+    "code": "UPG",
+    "cityName": "Makassar",
+    "name": "Sultan Hasanuddin International Airport"
+  }
 ]
-  

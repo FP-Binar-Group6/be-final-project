@@ -32,26 +32,41 @@ public class AirportSeeder implements CommandLineRunner {
     }
 
     private void seedAirportData() throws IOException {
-    // Define the relative path to the JSON file
-    String jsonFilePath = "data/airports.json";
+        // Define the relative path to the JSON file
+        String jsonFilePath = "data/airports.json";
 
-    // Read the JSON file from the classpath
-    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
+        // Read the JSON file from the classpath
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(jsonFilePath);
 
-    if (inputStream == null) {
-        throw new FileNotFoundException("JSON file not found: " + jsonFilePath);
+        if (inputStream == null) {
+            throw new FileNotFoundException("JSON file not found: " + jsonFilePath);
+        }
+
+        // Create an ObjectMapper instance
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // Map the JSON content to a list of Airport objects
+        List<Airport> airports = objectMapper.readValue(inputStream, new TypeReference<List<Airport>>() {});
+
+        // Upsert the airports to the database
+        for (Airport airport : airports) {
+            // Check if an airline with the same ID exists in the database
+            Airport existingAirport = airportRepository.findById(airport.getAirportId()).orElse(null);
+            
+            if (existingAirport != null) {
+                // Update the existing airline with the new data
+                existingAirport.setCode(airport.getCode());
+                existingAirport.setName(airport.getName());
+                existingAirport.setCityName(airport.getCityName());
+                
+                airportRepository.save(existingAirport);
+            } else {
+                // Save the new airline to the database
+                airportRepository.save(airport);
+            }
+        }
+
+        inputStream.close();
     }
-
-    // Create an ObjectMapper instance
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    // Map the JSON content to a list of Airport objects
-    List<Airport> airports = objectMapper.readValue(inputStream, new TypeReference<List<Airport>>() {});
-
-    // Save the airports to the database
-    airportRepository.saveAll(airports);
-
-    inputStream.close();
-}
 
 }

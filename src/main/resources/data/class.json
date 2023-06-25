@@ -1,13 +1,16 @@
 [
   {
+    "classId":1,
     "name" : "Economy Class",
     "price" : "1000000"
   },
   {
+    "classId":2,
     "name" : "Business Class",
     "price" : "1500000"
   },
   {
+    "classId":3,
     "name" : "First Class",
     "price" : "2500000"
   }
