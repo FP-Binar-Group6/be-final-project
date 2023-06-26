@@ -32,6 +32,19 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
+    public List<ScheduleResponseDTO> searchSchedules(ScheduleRequestDTO scheduleRequest) {
+        var airline = airlineRepository.findById(scheduleRequest.getAirlineId()).orElseThrow(() -> new RuntimeException("Airline not found"));
+        var departureAirport = airportRepository.findById(scheduleRequest.getDepartureAirportId()).orElseThrow(() -> new RuntimeException("Departure Airport not found"));
+        var arrivalAirport = airportRepository.findById(scheduleRequest.getArrivalAirportId()).orElseThrow(() -> new RuntimeException("Arrival Airport not found"));
+        var schedule = scheduleRequest.toSchedule(departureAirport, arrivalAirport, airline);
+        var result = scheduleRepository.searchSchedules(schedule.getDepartureTime(), schedule.getArrivalTime(), schedule.getDepartureAirport().getAirportId(), schedule.getArrivalAirport().getAirportId(), schedule.getAirline().getAirlineId());
+        return result.stream().map(s -> {
+            return s.convertToResponse();
+        }).toList();
+    }
+
+
+    @Override
     public ScheduleResponseDTO getScheduleById(int id) {
         Optional<Schedule> schedule = scheduleRepository.findById(id);
         if (schedule.isPresent()) {

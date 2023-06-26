@@ -1,6 +1,5 @@
 package com.fpbinar6.code.models.dto;
 
-import com.fpbinar6.code.models.Schedule;
 import com.fpbinar6.code.models.Class;
 
 import lombok.AllArgsConstructor;

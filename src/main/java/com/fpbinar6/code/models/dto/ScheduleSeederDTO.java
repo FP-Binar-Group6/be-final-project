@@ -16,8 +16,8 @@ public class ScheduleSeederDTO extends ScheduleRequestDTO {
 
     public Schedule toSchedule(Schedule existingSchedule, Airport departureAirport, Airport arrivalAirport,
             Airline airline) {
-        existingSchedule.setDepartureTime(this.departureTime);
-        existingSchedule.setArrivalTime(this.arrivalTime);
+        existingSchedule.setDepartureTime(existingSchedule.getDepartureTime());
+        existingSchedule.setArrivalTime(existingSchedule.getArrivalTime());
         existingSchedule.setDepartureAirport(departureAirport);
         existingSchedule.setArrivalAirport(arrivalAirport);
         existingSchedule.setAirline(airline);

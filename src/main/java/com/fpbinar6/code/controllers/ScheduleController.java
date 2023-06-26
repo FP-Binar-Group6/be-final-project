@@ -1,6 +1,12 @@
 package com.fpbinar6.code.controllers;
 
 import com.fpbinar6.code.models.dto.ScheduleRequestDTO;
+import com.fpbinar6.code.models.dto.ScheduleResponseDTO;
+import com.fpbinar6.code.repository.ScheduleRepository;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +24,38 @@ import lombok.RequiredArgsConstructor;
 public class ScheduleController {
     
     final ScheduleService scheduleService;
+    final ScheduleRepository scheduleRepository;
 
     @GetMapping("/")
     public ResponseEntity<Object> getAllSchedule() {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, scheduleService.getAllSchedule());
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Object> searchSchedules(
+            @RequestParam(value = "departureTime", required = false) Timestamp departureTime,
+            @RequestParam(value = "arrivalTime", required = false) Timestamp arrivalTime,
+            @RequestParam(value = "departureAirportId", required = false) Integer departureAirportId,
+            @RequestParam(value = "arrivalAirportId", required = false) Integer arrivalAirportId,
+            @RequestParam(value = "airlineId", required = false) Integer airlineId
+    ) {
+        ScheduleRequestDTO scheduleRequest = ScheduleRequestDTO.builder()
+                .departureTime(departureTime)
+                .arrivalTime(arrivalTime)
+                .departureAirportId(departureAirportId)
+                .arrivalAirportId(arrivalAirportId)
+                .airlineId(airlineId)
+                .build();
+        
+        if (airlineId == null) {
+            // List<ScheduleResponseDTO> schedulesWithoutAirlineId = scheduleService.searchSchedulesWithoutAirlineId(scheduleRequest);
+            
+            // return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, schedulesWithoutAirlineId);
+        }
+
+        List<ScheduleResponseDTO> schedules = scheduleService.searchSchedules(scheduleRequest);
+
+        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, schedules);
     }
 
     @GetMapping("/{id}")

@@ -2,6 +2,8 @@ package com.fpbinar6.code.models;
 
 import java.sql.Date;
 
+import com.fpbinar6.code.models.dto.TicketResponseDTO;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
@@ -51,4 +52,17 @@ public class Ticket {
     @JoinColumn(name = "seat_id", referencedColumnName = "id")
     @OneToOne(targetEntity = Seat.class, cascade = CascadeType.MERGE)
     private Seat seat;
+
+    public TicketResponseDTO convertToResponse(){
+        return TicketResponseDTO.builder()
+        .ticketId(this.ticketId)
+        .title(this.title)
+        .firstName(this.firstName)
+        .lastName(this.lastName)
+        .birthDate(this.birthDate)
+        .nationality(this.nationality)
+        .idCardNumber(this.idCardNumber)
+        .seat(this.seat)
+        .build();
+    }
 }

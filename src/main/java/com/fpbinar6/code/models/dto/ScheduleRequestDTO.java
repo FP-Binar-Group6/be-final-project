@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ScheduleRequestDTO {
-     Timestamp departureTime;
-     Timestamp arrivalTime;
+    private Timestamp departureTime;
+    private Timestamp arrivalTime;
     private int departureAirportId;
     private int arrivalAirportId;
     private int airlineId;
@@ -32,5 +32,4 @@ public class ScheduleRequestDTO {
                 .build();
     }
 
-    
 }
