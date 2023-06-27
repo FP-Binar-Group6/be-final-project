@@ -25,9 +25,9 @@ public class TicketController {
     final TicketService ticketService;
     
     @GetMapping("/")
-    public ResponseEntity<Object> getTicketByUserId(@PathVariable("id") int id){
+    public ResponseEntity<Object> getTicketByPaymentId(@PathVariable("id") int id){
         try {
-            var ticket = ticketService.getTicketByUserId(id);
+            var ticket = ticketService.getTicketByPaymentId(id);
             return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, ticket);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(Constants.ERROR_RETRIEVE_MSG, HttpStatus.NOT_FOUND, e.getMessage());
