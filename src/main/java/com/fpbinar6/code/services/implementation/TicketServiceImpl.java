@@ -1,5 +1,6 @@
 package com.fpbinar6.code.services.implementation;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -44,6 +45,14 @@ public class TicketServiceImpl implements TicketService {
             throw new RuntimeException("Data tidak ditemukan");
         }
         ticketRepository.delete(result.get());
+    }
+
+    @Override
+    public List<TicketResponseDTO> getTicketByPaymentId(int id) {
+        var tickets = ticketRepository.findByPaymentId(id);
+        return tickets.stream().map(ticket -> {
+            return ticket.convertToResponse();
+        }).toList();
     }
 
     

@@ -1,10 +1,13 @@
 package com.fpbinar6.code.services.implementation;
 
-import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -53,12 +56,38 @@ public class ScheduleServiceImpl implements ScheduleService {
             departureTimeEnd = new Timestamp(calendar.getTimeInMillis());
         }
 
-        List<Schedule> result = scheduleRepository.searchSchedules(departureTime, departureTimeStart,departureTimeEnd, departureAirportId,
+        List<Schedule> result = scheduleRepository.searchSchedules(departureTime, departureTimeStart, departureTimeEnd,
+                departureAirportId,
                 arrivalAirportId);
 
         return result.stream()
                 .map(Schedule::convertToResponse)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ScheduleResponseDTO> getRandomSchedules(int count) {
+        List<Schedule> schedules = scheduleRepository.findAll();
+        List<ScheduleResponseDTO> responseDTOs = new ArrayList<>();
+
+        Random random = new Random();
+        Set<Integer> selectedIndexes = new HashSet<>();
+
+        int maxIndex = schedules.size() - 1;
+        int selectedCount = 0;
+
+        while (selectedCount < count && selectedCount <= maxIndex) {
+            int randomIndex = random.nextInt(maxIndex + 1);
+            if (!selectedIndexes.contains(randomIndex)) {
+                Schedule schedule = schedules.get(randomIndex);
+                ScheduleResponseDTO responseDTO = schedule.convertToResponse();
+                responseDTOs.add(responseDTO);
+
+                selectedIndexes.add(randomIndex);
+                selectedCount++;
+            }
+        }
+        return responseDTOs;
     }
 
     @Override

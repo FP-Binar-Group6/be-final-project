@@ -6,7 +6,6 @@ import com.fpbinar6.code.repository.ScheduleRepository;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -47,6 +46,12 @@ public class ScheduleController {
         List<ScheduleResponseDTO> schedules = scheduleService.searchSchedules(departureTime, departureAirportId,
                 arrivalAirportId);
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, schedules);
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<Object> getRandomSchedules() {
+        List<ScheduleResponseDTO> randomSchedules = scheduleService.getRandomSchedules(5);
+        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, randomSchedules);
     }
 
     @GetMapping("/{id}")

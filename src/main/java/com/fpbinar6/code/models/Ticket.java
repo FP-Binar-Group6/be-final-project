@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
@@ -52,6 +53,10 @@ public class Ticket {
     @JoinColumn(name = "seat_id", referencedColumnName = "id")
     @OneToOne(targetEntity = Seat.class, cascade = CascadeType.MERGE)
     private Seat seat;
+
+    @JoinColumn(name = "payment_id", referencedColumnName = "id")
+    @ManyToOne(targetEntity = Payment.class, cascade = CascadeType.MERGE)
+    private Payment payment;
 
     public TicketResponseDTO convertToResponse(){
         return TicketResponseDTO.builder()
