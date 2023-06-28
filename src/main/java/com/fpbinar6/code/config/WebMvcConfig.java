@@ -22,7 +22,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
   }
 
   @Override
-    public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new TimestampConverter());
-    }
+  public void addFormatters(FormatterRegistry registry) {
+    registry.addConverter(new TimestampConverter());
+  }
 }
