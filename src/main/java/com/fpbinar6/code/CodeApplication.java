@@ -13,18 +13,17 @@ public class CodeApplication {
 		SpringApplication.run(CodeApplication.class, args);
 	}
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**")
-						.allowedMethods("*")
-						.allowedOrigins("*")
-						.allowedHeaders("*")
-						.allowCredentials(true)
-						.maxAge(-1);
-			}
-		};
-	}
+	// @Bean
+	// public WebMvcConfigurer corsConfigurer() {
+	// 	return new WebMvcConfigurer() {
+	// 		public void addCorsMappings(CorsRegistry registry) {
+	// 			registry.addMapping("/**")
+	// 					.allowedMethods("*")
+	// 					.allowedOrigins("*")
+	// 					.allowedHeaders("*")
+	// 					.allowCredentials(true);
+	// 		}
+	// 	};
+	// }
 
 }

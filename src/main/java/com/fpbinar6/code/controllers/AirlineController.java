@@ -13,17 +13,17 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/airline")
+@RequestMapping("/api")
 public class AirlineController {
     
     final AirlineService airlineService;
 
-    @GetMapping("/")
+    @GetMapping("/airline")
     public ResponseEntity<Object> getAllAirline() {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airlineService.getAllAirline());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/airline/{id}")
     public ResponseEntity<Object> getAirlineById(@PathVariable("id") int id) {
         try {
             var airline = airlineService.getAirlineById(id);
@@ -34,7 +34,7 @@ public class AirlineController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/airline/{id}")
     public ResponseEntity<Object> deteletAirlineById(@PathVariable("id") int id){
 
         try {
@@ -46,7 +46,7 @@ public class AirlineController {
         }
     }
 
-    @PutMapping("/")
+    @PutMapping("/airline")
     public ResponseEntity<Object> updateAirline(@RequestBody Airline airline){
         try {
             airlineService.updateAirline(airline);
@@ -57,7 +57,7 @@ public class AirlineController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/airline")
     public ResponseEntity<Object> saveAirline(@RequestBody Airline airline){
         try {
             airlineService.saveAirline(airline);
