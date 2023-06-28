@@ -10,4 +10,5 @@ public interface TicketService {
     public TicketResponseDTO saveTicket(TicketRequestDTO ticketRequest);
     public List<TicketResponseDTO> getTicketByPaymentId(int id);
     public void deleteTicketById(int id);
+    public List<TicketResponseDTO> saveAllTickets(List<TicketRequestDTO> ticketRequests);
 }

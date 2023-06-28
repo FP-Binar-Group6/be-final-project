@@ -2,6 +2,7 @@ package com.fpbinar6.code.models.dto;
 
 import java.sql.Date;
 
+import com.fpbinar6.code.models.Schedule;
 import com.fpbinar6.code.models.Seat;
 import com.fpbinar6.code.models.Ticket;
 
@@ -21,9 +22,10 @@ public class TicketRequestDTO {
     private Date birthDate;
     private String nationality;
     private String idCardNumber;
-    private int seatId;
+    private Integer seatId;
+    private int scheduleId;
 
-    public Ticket toTicket(Seat seat){
+    public Ticket toTicket(Seat seat, Schedule schedule){
         return Ticket.builder()
         .title(this.title)
         .firstName(this.firstName)
@@ -31,6 +33,7 @@ public class TicketRequestDTO {
         .birthDate(this.birthDate)
         .nationality(this.nationality)
         .idCardNumber(this.idCardNumber)
+        .schedule(schedule)
         .seat(seat)
         .build();
     }
