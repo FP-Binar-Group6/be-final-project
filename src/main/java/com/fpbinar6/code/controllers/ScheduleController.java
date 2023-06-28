@@ -21,19 +21,19 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/schedule")
+@RequestMapping("/api")
 public class ScheduleController {
 
     final ScheduleService scheduleService;
     final ScheduleRepository scheduleRepository;
 
-    @GetMapping("/")
+    @GetMapping("/schedule")
     public ResponseEntity<Object> getAllSchedule() {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK,
                 scheduleService.getAllSchedule());
     }
 
-    @GetMapping("/search")
+    @GetMapping("/schedule/search")
     public ResponseEntity<Object> searchSchedules(
             @RequestParam(value = "departureDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate departureDate,
             @RequestParam(value = "departureAirportId", required = false) Integer departureAirportId,
@@ -48,13 +48,13 @@ public class ScheduleController {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, schedules);
     }
 
-    @GetMapping("/random")
+    @GetMapping("/schedule/random")
     public ResponseEntity<Object> getRandomSchedules() {
         List<ScheduleResponseDTO> randomSchedules = scheduleService.getRandomSchedules(5);
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, randomSchedules);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/schedule/{id}")
     public ResponseEntity<Object> getScheduleById(@PathVariable("id") int id) {
         try {
             var schedule = scheduleService.getScheduleById(id);
@@ -65,7 +65,7 @@ public class ScheduleController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/schedule/{id}")
     public ResponseEntity<Object> deleteScheduleById(@PathVariable("id") int id) {
         try {
             scheduleService.deleteScheduleById(id);
@@ -76,7 +76,7 @@ public class ScheduleController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/schedule")
     public ResponseEntity<Object> saveSchedule(@RequestBody ScheduleRequestDTO scheduleRequest) {
         try {
             scheduleService.saveSchedule(scheduleRequest);

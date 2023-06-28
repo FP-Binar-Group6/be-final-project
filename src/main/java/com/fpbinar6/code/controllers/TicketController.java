@@ -19,12 +19,12 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/ticket")
+@RequestMapping("/api")
 public class TicketController {
 
     final TicketService ticketService;
     
-    @GetMapping("/")
+    @GetMapping("/ticket")
     public ResponseEntity<Object> getTicketByPaymentId(@PathVariable("id") int id){
         try {
             var ticket = ticketService.getTicketByPaymentId(id);
@@ -34,7 +34,7 @@ public class TicketController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/ticket/{id}")
     public ResponseEntity<Object> getTicketById(@PathVariable("id") int id){
         try {
             var ticket = ticketService.getTicketById(id);
@@ -44,7 +44,7 @@ public class TicketController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/ticket")
     public ResponseEntity<Object> saveTicket(@RequestBody TicketRequestDTO ticketRequest){
         try {
             ticketService.saveTicket(ticketRequest);
@@ -54,7 +54,7 @@ public class TicketController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/ticket/{id}")
     public ResponseEntity<Object> deleteTicketById(@PathVariable("id") int id){
         try {
             ticketService.deleteTicketById(id);

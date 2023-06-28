@@ -10,17 +10,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/airport")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class AirportController {
     final AirportService airportService;
 
-    @GetMapping("/")
+    @GetMapping("/airport")
     public ResponseEntity<Object> getAllAirport() {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, airportService.getAllAirport());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/airport/{id}")
     public ResponseEntity<Object> getAirportById(@PathVariable("id") int id) {
 
         try {
@@ -32,7 +32,7 @@ public class AirportController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/airport/{id}")
     public ResponseEntity<Object> deleteAirportById(@PathVariable("id") int id){
         try {
             airportService.deleteAirportById(id);
@@ -43,7 +43,7 @@ public class AirportController {
         }
     }
 
-    @PutMapping("/")
+    @PutMapping("/airport")
     public ResponseEntity<Object> updateAirport(@RequestBody Airport airport) {
         try {
             airportService.updateAirport(airport);
@@ -55,7 +55,7 @@ public class AirportController {
 
     }
 
-    @PostMapping("/")
+    @PostMapping("/airport")
     public ResponseEntity<Object> saveAirport(@RequestBody Airport airport){
         try {
             airportService.saveAirport(airport);

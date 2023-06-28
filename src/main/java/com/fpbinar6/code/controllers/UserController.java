@@ -14,12 +14,12 @@ import org.springframework.http.HttpStatus;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 public class UserController {
 
     final UserService userService;
     
-    @GetMapping("/")
+    @GetMapping("/user")
     public ResponseEntity<Object> getAllUser() {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, userService.getAllUser());
     }

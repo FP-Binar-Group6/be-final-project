@@ -13,18 +13,18 @@ import com.fpbinar6.code.auth.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class AuthController {
 
     private final AuthService service;
     
-    @PostMapping("/login")
+    @PostMapping("/auth/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest request){
         return ResponseEntity.ok(service.authenticate(request));
     }
 
-    @PostMapping("/register")
+    @PostMapping("/auth/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request){
         return ResponseEntity.ok(service.register(request));
     }

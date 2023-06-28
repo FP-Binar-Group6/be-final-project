@@ -10,18 +10,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/class")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class ClassController {
 
     final ClassService classService;
 
-    @GetMapping("/")
+    @GetMapping("/class")
     public ResponseEntity<Object> getAllClass() {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, classService.getAllClass());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/class/{id}")
     public ResponseEntity<Object> getClassById(@PathVariable("id") int id) {
 
         try {
@@ -33,7 +33,7 @@ public class ClassController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/class/{id}")
     public ResponseEntity<Object> deleteClassById(@PathVariable("id") int id){
 
         try {
@@ -45,7 +45,7 @@ public class ClassController {
         }
     }
 
-    @PutMapping("/")
+    @PutMapping("/class")
     public ResponseEntity<Object> updateClass(@RequestBody Class kelas) {
 
         try {
@@ -57,7 +57,7 @@ public class ClassController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/class")
     public ResponseEntity<Object> saveClass(@RequestBody Class kelas){
         try {
             classService.saveClass(kelas);

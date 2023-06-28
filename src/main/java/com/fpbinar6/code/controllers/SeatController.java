@@ -18,18 +18,18 @@ import com.fpbinar6.code.utils.ResponseHandler;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/seat")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class SeatController {
     final SeatService seatService;
 
-    @GetMapping("/")
+    @GetMapping("/seat")
     public ResponseEntity<Object> getAllSeat() {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK,
                 seatService.getAllSeat());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/seat/{id}")
     public ResponseEntity<Object> getSeatById(@PathVariable("id") int id) {
         try {
             var seat = seatService.getSeatById(id);
@@ -40,7 +40,7 @@ public class SeatController {
         }
     }
 
-    @GetMapping("/schedule")
+    @GetMapping("/seat/schedule")
     public ResponseEntity<Object> getSeatByScheduleId(@RequestParam("schedule_id") int scheduleId) {
         try {
             var seat = seatService.getSeatByScheduleId(scheduleId);
@@ -51,7 +51,7 @@ public class SeatController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/seat")
     public ResponseEntity<Object> saveSeat(@RequestBody SeatRequestDTO seatRequest) {
 
         try {

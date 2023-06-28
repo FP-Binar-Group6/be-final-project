@@ -10,17 +10,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/paymentmethod")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class PaymentMethodController {
     final PaymentMethodService paymentMethodService;
 
-    @GetMapping("/")
+    @GetMapping("/paymentmethod")
     public ResponseEntity<Object> getAllPaymentMethod() {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, paymentMethodService.getAllPaymentMethod());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/paymentmethod/{id}")
     public ResponseEntity<Object> getPaymentMethodById(@PathVariable("id") int id) {
         try {
             var paymentMethod = paymentMethodService.getPaymentMethodById(id);
@@ -31,7 +31,7 @@ public class PaymentMethodController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/paymentmethod/{id}")
     public ResponseEntity<Object> deletePaymentMethodById(@PathVariable("id") int id){
 
         try {
@@ -44,7 +44,7 @@ public class PaymentMethodController {
 
     }
 
-    @PutMapping("/")
+    @PutMapping("/paymentmethod")
     public ResponseEntity<Object> updatePaymentMethod(@RequestBody PaymentMethod paymentMethod) {
         try {
             paymentMethodService.updatePaymentMethod(paymentMethod);
@@ -55,7 +55,7 @@ public class PaymentMethodController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/paymentmethod")
     public ResponseEntity<Object> savePaymentMethod(@RequestBody PaymentMethod paymentMethod){
         try {
             paymentMethodService.savePaymentMethod(paymentMethod);
