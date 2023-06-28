@@ -18,7 +18,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         .allowedMethods("*")
         .allowedOrigins("*")
         .allowedHeaders("*")
-        .allowCredentials(true);
+        .allowCredentials(false);
   }
 
   @Override
