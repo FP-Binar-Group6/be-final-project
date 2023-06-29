@@ -1,8 +1,8 @@
 [
     {
         "scheduleId": 1,
-        "departureTime": "2023-01-09T02:10:00.000+00:00",
-        "arrivalTime": "2023-01-09T04:10:00.000+00:00",
+        "departureTime": "2023-01-09T00:00:00.000+00:00",
+        "arrivalTime": "2023-01-09T03:00:00.000+00:00",
         "departureAirportId": 1,
         "arrivalAirportId": 2,
         "airlineId": 1
@@ -10,441 +10,441 @@
     {
         "scheduleId": 2,
         "departureTime": "2023-01-09T03:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T05:00:00.000+00:00",
+        "arrivalTime": "2023-01-09T06:00:00.000+00:00",
         "departureAirportId": 1,
         "arrivalAirportId": 3,
         "airlineId": 2
     },
     {
         "scheduleId": 3,
-        "departureTime": "2023-01-09T05:05:00.000+00:00",
-        "arrivalTime": "2023-01-09T07:05:00.000+00:00",
+        "departureTime": "2023-01-09T06:00:00.000+00:00",
+        "arrivalTime": "2023-01-09T09:00:00.000+00:00",
         "departureAirportId": 1,
         "arrivalAirportId": 4,
-        "airlineId":3
+        "airlineId": 3
     },
     {
         "scheduleId": 4,
-        "departureTime": "2023-01-09T05:20:00.000+00:00",
-        "arrivalTime": "2023-01-09T07:20:00.000+00:00",
+        "departureTime": "2023-01-09T09:00:00.000+00:00",
+        "arrivalTime": "2023-01-09T12:00:00.000+00:00",
         "departureAirportId": 1,
         "arrivalAirportId": 5,
-        "airlineId":4
+        "airlineId": 4
     },
     {
         "scheduleId": 5,
-        "departureTime": "2023-01-09T06:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T07:00:00.000+00:00",
+        "departureTime": "2023-01-09T12:00:00.000+00:00",
+        "arrivalTime": "2023-01-09T15:00:00.000+00:00",
         "departureAirportId": 1,
         "arrivalAirportId": 6,
-        "airlineId":5
+        "airlineId": 5
     },
     {
         "scheduleId": 6,
-        "departureTime": "2023-01-09T07:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T08:20:00.000+00:00",
+        "departureTime": "2023-01-09T15:00:00.000+00:00",
+        "arrivalTime": "2023-01-09T18:00:00.000+00:00",
         "departureAirportId": 1,
         "arrivalAirportId": 7,
-        "airlineId":6
+        "airlineId": 6
     },
     {
         "scheduleId": 7,
-        "departureTime": "2023-01-09T05:20:00.000+00:00",
-        "arrivalTime": "2023-01-09T07:20:00.000+00:00",
+        "departureTime": "2023-01-09T18:00:00.000+00:00",
+        "arrivalTime": "2023-01-09T21:00:00.000+00:00",
         "departureAirportId": 1,
         "arrivalAirportId": 8,
-        "airlineId":7
+        "airlineId": 7
     },
     {
         "scheduleId": 8,
-        "departureTime": "2023-01-09T05:20:20.000+00:00",
-        "arrivalTime": "2023-01-09T07:20:00.000+00:00",
+        "departureTime": "2023-01-10T00:00:00.000+00:00",
+        "arrivalTime": "2023-01-10T03:00:00.000+00:00",
         "departureAirportId": 2,
         "arrivalAirportId": 1,
-        "airlineId":1
+        "airlineId": 1
     },
     {
         "scheduleId": 9,
-        "departureTime": "2023-01-09T05:45:05.000+00:00",
-        "arrivalTime": "2023-01-09T07:45:00.000+00:00",
+        "departureTime": "2023-01-10T03:00:00.000+00:00",
+        "arrivalTime": "2023-01-10T06:00:00.000+00:00",
         "departureAirportId": 2,
         "arrivalAirportId": 3,
-        "airlineId":2
+        "airlineId": 2
     },
     {
         "scheduleId": 10,
-        "departureTime": "2023-01-09T05:55:00.000+00:00",
-        "arrivalTime": "2023-01-09T07:55:00.000+00:00",
+        "departureTime": "2023-01-10T06:00:00.000+00:00",
+        "arrivalTime": "2023-01-10T09:00:00.000+00:00",
         "departureAirportId": 2,
         "arrivalAirportId": 4,
-        "airlineId":3
+        "airlineId": 3
     },
     {
         "scheduleId": 11,
-        "departureTime": "2023-01-09T06:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T07:00:00.000+00:00",
+        "departureTime": "2023-01-10T09:00:00.000+00:00",
+        "arrivalTime": "2023-01-10T12:00:00.000+00:00",
         "departureAirportId": 2,
         "arrivalAirportId": 5,
-        "airlineId":4
+        "airlineId": 4
     },
     {
         "scheduleId": 12,
-        "departureTime": "2023-01-09T06:20:00.000+00:00",
-        "arrivalTime": "2023-01-09T07:20:00.000+00:00",
+        "departureTime": "2023-01-10T12:00:00.000+00:00",
+        "arrivalTime": "2023-01-10T15:00:00.000+00:00",
         "departureAirportId": 2,
         "arrivalAirportId": 6,
-        "airlineId":5
+        "airlineId": 5
     },
     {
         "scheduleId": 13,
-        "departureTime": "2023-01-09T06:45:00.000+00:00",
-        "arrivalTime": "2023-01-09T08:45:00.000+00:00",
+        "departureTime": "2023-01-10T15:00:00.000+00:00",
+        "arrivalTime": "2023-01-10T18:00:00.000+00:00",
         "departureAirportId": 2,
         "arrivalAirportId": 7,
-        "airlineId":6
+        "airlineId": 6
     },
     {
         "scheduleId": 14,
-        "departureTime": "2023-01-09T07:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T09:00:00.000+00:00",
+        "departureTime": "2023-01-10T18:00:00.000+00:00",
+        "arrivalTime": "2023-01-10T21:00:00.000+00:00",
         "departureAirportId": 2,
         "arrivalAirportId": 8,
-        "airlineId":7
+        "airlineId": 7
     },
     {
         "scheduleId": 15,
-        "departureTime": "2023-01-09T07:05:00.000+00:00",
-        "arrivalTime": "2023-01-09T08:05:05.000+00:00",
+        "departureTime": "2023-01-11T00:00:00.000+00:00",
+        "arrivalTime": "2023-01-11T03:00:00.000+00:00",
         "departureAirportId": 3,
         "arrivalAirportId": 1,
         "airlineId":1
     },
     {
         "scheduleId": 16,
-        "departureTime": "2023-01-09T07:15:00.000+00:00",
-        "arrivalTime": "2023-01-09T08:15:00.000+00:00",
+        "departureTime": "2023-01-11T03:00:00.000+00:00",
+        "arrivalTime": "2023-01-11T06:00:00.000+00:00",
         "departureAirportId": 3,
         "arrivalAirportId": 2,
         "airlineId":2
     },
     {
         "scheduleId": 17,
-        "departureTime": "2023-01-09T07:30:00.000+00:00",
-        "arrivalTime": "2023-01-09T09:30:00.000+00:00",
+        "departureTime": "2023-01-11T06:00:00.000+00:00",
+        "arrivalTime": "2023-01-11T09:00:00.000+00:00",
         "departureAirportId": 3,
         "arrivalAirportId": 4,
         "airlineId":3
     },
     {
         "scheduleId": 18,
-        "departureTime": "2023-01-09T08:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T10:00:00.000+00:00",
+        "departureTime": "2023-01-11T09:00:00.000+00:00",
+        "arrivalTime": "2023-01-11T12:00:00.000+00:00",
         "departureAirportId": 3,
         "arrivalAirportId": 5,
         "airlineId":4
     },
     {
         "scheduleId": 19,
-        "departureTime": "2023-01-09T08:15:00.000+00:00",
-        "arrivalTime": "2023-01-09T10:15:00.000+00:00",
+        "departureTime": "2023-01-11T12:00:00.000+00:00",
+        "arrivalTime": "2023-01-11T15:00:00.000+00:00",
         "departureAirportId": 3,
         "arrivalAirportId": 6,
         "airlineId":5
     },
     {
         "scheduleId": 20,
-        "departureTime": "2023-01-09T08:20:00.000+00:00",
-        "arrivalTime": "2023-01-09T09:20:00.000+00:00",
+        "departureTime": "2023-01-11T15:00:00.000+00:00",
+        "arrivalTime": "2023-01-11T18:00:00.000+00:00",
         "departureAirportId": 3,
         "arrivalAirportId": 7,
         "airlineId":6
     },
     {
         "scheduleId": 21,
-        "departureTime": "2023-01-09T08:45:00.000+00:00",
-        "arrivalTime": "2023-01-09T10:45:00.000+00:00",
+        "departureTime": "2023-01-11T18:00:00.000+00:00",
+        "arrivalTime": "2023-01-11T21:00:00.000+00:00",
         "departureAirportId": 3,
         "arrivalAirportId": 8,
         "airlineId":7
     },
     {
         "scheduleId": 22,
-        "departureTime": "2023-01-09T08:55:00.000+00:00",
-        "arrivalTime": "2023-01-09T09:55:00.000+00:00",
+        "departureTime": "2023-01-12T00:00:00.000+00:00",
+        "arrivalTime": "2023-01-12T03:00:00.000+00:00",
         "departureAirportId": 4,
         "arrivalAirportId": 1,
-        "airlineId":1
+        "airlineId": 1
     },
     {
         "scheduleId": 23,
-        "departureTime": "2023-01-09T09:05:00.000+00:00",
-        "arrivalTime": "2023-01-09T11:05:00.000+00:00",
+        "departureTime": "2023-01-12T03:00:00.000+00:00",
+        "arrivalTime": "2023-01-12T06:00:00.000+00:00",
         "departureAirportId": 4,
         "arrivalAirportId": 2,
-        "airlineId":2
+        "airlineId": 2
     },
     {
         "scheduleId": 24,
-        "departureTime": "2023-01-09T09:30:00.000+00:00",
-        "arrivalTime": "2023-01-09T11:30:00.000+00:00",
+        "departureTime": "2023-01-12T06:00:00.000+00:00",
+        "arrivalTime": "2023-01-12T09:00:00.000+00:00",
         "departureAirportId": 4,
         "arrivalAirportId": 3,
-        "airlineId":3
+        "airlineId": 3
     },
     {
         "scheduleId": 25,
-        "departureTime": "2023-01-09T10:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T11:00:00.000+00:00",
+        "departureTime": "2023-01-12T09:00:00.000+00:00",
+        "arrivalTime": "2023-01-12T12:00:00.000+00:00",
         "departureAirportId": 4,
         "arrivalAirportId": 5,
-        "airlineId":4
+        "airlineId": 4
     },
     {
         "scheduleId": 26,
-        "departureTime": "2023-01-09T10:15:00.000+00:00",
-        "arrivalTime": "2023-01-09T12:15:00.000+00:00",
+        "departureTime": "2023-01-12T12:00:00.000+00:00",
+        "arrivalTime": "2023-01-12T15:00:00.000+00:00",
         "departureAirportId": 4,
         "arrivalAirportId": 6,
-        "airlineId":5
+        "airlineId": 5
     },
     {
         "scheduleId": 27,
-        "departureTime": "2023-01-09T10:30:00.000+00:00",
-        "arrivalTime": "2023-01-09T12:30:00.000+00:00",
+        "departureTime": "2023-01-12T15:00:00.000+00:00",
+        "arrivalTime": "2023-01-12T18:00:00.000+00:00",
         "departureAirportId": 4,
         "arrivalAirportId": 7,
-        "airlineId":6
+        "airlineId": 6
     },
     {
         "scheduleId": 28,
-        "departureTime": "2023-01-09T10:55:00.000+00:00",
-        "arrivalTime": "2023-01-09T11:55:00.000+00:00",
+        "departureTime": "2023-01-12T18:00:00.000+00:00",
+        "arrivalTime": "2023-01-12T21:00:00.000+00:00",
         "departureAirportId": 4,
         "arrivalAirportId": 8,
-        "airlineId":7
+        "airlineId": 7
     },
     {
         "scheduleId": 29,
-        "departureTime": "2023-01-09T11:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T12:00:00.000+00:00",
+        "departureTime": "2023-01-13T00:00:00.000+00:00",
+        "arrivalTime": "2023-01-13T03:00:00.000+00:00",
         "departureAirportId": 5,
         "arrivalAirportId": 1,
-        "airlineId":1
+        "airlineId": 1
     },
     {
         "scheduleId": 30,
-        "departureTime": "2023-01-09T11:25:00.000+00:00",
-        "arrivalTime": "2023-01-09T13:25:00.000+00:00",
+        "departureTime": "2023-01-13T03:00:00.000+00:00",
+        "arrivalTime": "2023-01-13T06:00:00.000+00:00",
         "departureAirportId": 5,
         "arrivalAirportId": 2,
-        "airlineId":2
+        "airlineId": 2
     },
     {
         "scheduleId": 31,
-        "departureTime": "2023-01-09T11:30:00.000+00:00",
-        "arrivalTime": "2023-01-09T13:30:00.000+00:00",
+        "departureTime": "2023-01-13T06:00:00.000+00:00",
+        "arrivalTime": "2023-01-13T09:00:00.000+00:00",
         "departureAirportId": 5,
         "arrivalAirportId": 3,
-        "airlineId":3
+        "airlineId": 3
     },
     {
         "scheduleId": 32,
-        "departureTime": "2023-01-09T12:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T14:00:00.000+00:00",
+        "departureTime": "2023-01-13T09:00:00.000+00:00",
+        "arrivalTime": "2023-01-13T12:00:00.000+00:00",
         "departureAirportId": 5,
         "arrivalAirportId": 4,
-        "airlineId":4
+        "airlineId": 4
     },
     {
         "scheduleId": 33,
-        "departureTime": "2023-01-09T12:15:00.000+00:00",
-        "arrivalTime": "2023-01-09T15:15:00.000+00:00",
+        "departureTime": "2023-01-13T12:00:00.000+00:00",
+        "arrivalTime": "2023-01-13T15:00:00.000+00:00",
         "departureAirportId": 5,
         "arrivalAirportId": 6,
-        "airlineId":5
+        "airlineId": 5
     },
     {
         "scheduleId": 34,
-        "departureTime": "2023-01-09T12:30:00.000+00:00",
-        "arrivalTime": "2023-01-09T14:30:00.000+00:00",
+        "departureTime": "2023-01-13T15:00:00.000+00:00",
+        "arrivalTime": "2023-01-13T18:00:00.000+00:00",
         "departureAirportId": 5,
         "arrivalAirportId": 7,
-        "airlineId":6
+        "airlineId": 6
     },
     {
         "scheduleId": 35,
-        "departureTime": "2023-01-09T12:55:00.000+00:00",
-        "arrivalTime": "2023-01-09T14:55:00.000+00:00",
+        "departureTime": "2023-01-13T18:00:00.000+00:00",
+        "arrivalTime": "2023-01-13T21:00:00.000+00:00",
         "departureAirportId": 5,
         "arrivalAirportId": 8,
-        "airlineId":7
+        "airlineId": 7
     },
     {
         "scheduleId": 36,
-        "departureTime": "2023-01-09T13:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T14:00:00.000+00:00",
+        "departureTime": "2023-01-14T00:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T03:00:00.000+00:00",
         "departureAirportId": 6,
         "arrivalAirportId": 1,
-        "airlineId":1
+        "airlineId": 1
     },
     {
         "scheduleId": 37,
-        "departureTime": "2023-01-09T13:15:00.000+00:00",
-        "arrivalTime": "2023-01-09T15:15:00.000+00:00",
+        "departureTime": "2023-01-14T03:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T06:00:00.000+00:00",
         "departureAirportId": 6,
         "arrivalAirportId": 2,
-        "airlineId":2
+        "airlineId": 2
     },
     {
         "scheduleId": 38,
-        "departureTime": "2023-01-09T13:30:00.000+00:00",
-        "arrivalTime": "2023-01-09T15:30:00.000+00:00",
+        "departureTime": "2023-01-14T06:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T09:00:00.000+00:00",
         "departureAirportId": 6,
         "arrivalAirportId": 3,
-        "airlineId":3
+        "airlineId": 3
     },
     {
         "scheduleId": 39,
-        "departureTime": "2023-01-09T13:55:00.000+00:00",
-        "arrivalTime": "2023-01-09T14:55:00.000+00:00",
+        "departureTime": "2023-01-14T09:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T12:00:00.000+00:00",
         "departureAirportId": 6,
         "arrivalAirportId": 4,
-        "airlineId":4
+        "airlineId": 4
     },
     {
         "scheduleId": 40,
-        "departureTime": "2023-01-09T14:05:00.000+00:00",
-        "arrivalTime": "2023-01-09T16:05:00.000+00:00",
+        "departureTime": "2023-01-14T12:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T15:00:00.000+00:00",
         "departureAirportId": 6,
         "arrivalAirportId": 5,
-        "airlineId":5
+        "airlineId": 5
     },
     {
         "scheduleId": 41,
-        "departureTime": "2023-01-09T14:20:00.000+00:00",
-        "arrivalTime": "2023-01-09T16:20:00.000+00:00",
+        "departureTime": "2023-01-14T15:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T18:00:00.000+00:00",
         "departureAirportId": 6,
         "arrivalAirportId": 7,
-        "airlineId":6
+        "airlineId": 6
     },
     {
         "scheduleId": 42,
-        "departureTime": "2023-01-09T14:45:00.000+00:00",
-        "arrivalTime": "2023-01-09T15:45:00.000+00:00",
+        "departureTime": "2023-01-14T18:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T21:00:00.000+00:00",
         "departureAirportId": 6,
         "arrivalAirportId": 8,
-        "airlineId":7
+        "airlineId": 7
     },
     {
         "scheduleId": 43,
-        "departureTime": "2023-01-09T15:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T16:00:00.000+00:00",
+        "departureTime": "2023-01-14T00:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T03:00:00.000+00:00",
         "departureAirportId": 7,
         "arrivalAirportId": 1,
-        "airlineId":1
+        "airlineId": 1
     },
     {
         "scheduleId": 44,
-        "departureTime": "2023-01-09T15:05:00.000+00:00",
-        "arrivalTime": "2023-01-09T16:05:00.000+00:00",
+        "departureTime": "2023-01-14T03:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T06:00:00.000+00:00",
         "departureAirportId": 7,
         "arrivalAirportId": 2,
-        "airlineId":2
+        "airlineId": 2
     },
     {
         "scheduleId": 45,
-        "departureTime": "2023-01-09T15:30:00.000+00:00",
-        "arrivalTime": "2023-01-09T17:30:00.000+00:00",
+        "departureTime": "2023-01-14T06:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T09:00:00.000+00:00",
         "departureAirportId": 7,
         "arrivalAirportId": 3,
-        "airlineId":3
+        "airlineId": 3
     },
     {
         "scheduleId": 46,
-        "departureTime": "2023-01-09T15:55:00.000+00:00",
-        "arrivalTime": "2023-01-09T17:55:00.000+00:00",
+        "departureTime": "2023-01-14T09:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T12:00:00.000+00:00",
         "departureAirportId": 7,
         "arrivalAirportId": 4,
-        "airlineId":4
+        "airlineId": 4
     },
     {
         "scheduleId": 47,
-        "departureTime": "2023-01-09T16:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T18:00:00.000+00:00",
+        "departureTime": "2023-01-14T12:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T15:00:00.000+00:00",
         "departureAirportId": 7,
         "arrivalAirportId": 5,
-        "airlineId":5
+        "airlineId": 5
     },
     {
         "scheduleId": 48,
-        "departureTime": "2023-01-09T16:15:00.000+00:00",
-        "arrivalTime": "2023-01-09T18:15:00.000+00:00",
+        "departureTime": "2023-01-14T15:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T18:00:00.000+00:00",
         "departureAirportId": 7,
         "arrivalAirportId": 6,
-        "airlineId":6
+        "airlineId": 6
     },
     {
         "scheduleId": 49,
-        "departureTime": "2023-01-09T16:25:00.000+00:00",
-        "arrivalTime": "2023-01-09T17:25:00.000+00:00",
+        "departureTime": "2023-01-14T18:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T21:00:00.000+00:00",
         "departureAirportId": 7,
         "arrivalAirportId": 8,
-        "airlineId":7
+        "airlineId": 7
     },
     {
         "scheduleId": 50,
-        "departureTime": "2023-01-09T17:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T18:00:00.000+00:00",
+        "departureTime": "2023-01-14T00:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T03:00:00.000+00:00",
         "departureAirportId": 8,
         "arrivalAirportId": 1,
-        "airlineId":1
+        "airlineId": 1
     },
     {
         "scheduleId": 51,
-        "departureTime": "2023-01-09T17:45:00.000+00:00",
-        "arrivalTime": "2023-01-09T18:45:00.000+00:00",
+        "departureTime": "2023-01-14T03:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T06:00:00.000+00:00",
         "departureAirportId": 8,
         "arrivalAirportId": 2,
-        "airlineId":2
+        "airlineId": 2
     },
     {
         "scheduleId": 52,
-        "departureTime": "2023-01-09T18:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T20:00:00.000+00:00",
+        "departureTime": "2023-01-14T06:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T09:00:00.000+00:00",
         "departureAirportId": 8,
         "arrivalAirportId": 3,
-        "airlineId":3
+        "airlineId": 3
     },
     {
         "scheduleId": 53,
-        "departureTime": "2023-01-09T18:30:00.000+00:00",
-        "arrivalTime": "2023-01-09T19:30:00.000+00:00",
+        "departureTime": "2023-01-14T09:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T12:00:00.000+00:00",
         "departureAirportId": 8,
         "arrivalAirportId": 4,
-        "airlineId":4
+        "airlineId": 4
     },
     {
         "scheduleId": 54,
-        "departureTime": "2023-01-09T19:15:00.000+00:00",
-        "arrivalTime": "2023-01-09T20:15:00.000+00:00",
+        "departureTime": "2023-01-14T12:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T15:00:00.000+00:00",
         "departureAirportId": 8,
         "arrivalAirportId": 5,
-        "airlineId":5
+        "airlineId": 5
     },
     {
         "scheduleId": 55,
-        "departureTime": "2023-01-09T20:30:00.000+00:00",
-        "arrivalTime": "2023-01-09T21:30:00.000+00:00",
+        "departureTime": "2023-01-14T15:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T18:00:00.000+00:00",
         "departureAirportId": 8,
         "arrivalAirportId": 6,
-        "airlineId":6
+        "airlineId": 6
     },
     {
         "scheduleId": 56,
-        "departureTime": "2023-01-09T22:00:00.000+00:00",
-        "arrivalTime": "2023-01-09T00:00:00.000+00:00",
+        "departureTime": "2023-01-14T18:00:00.000+00:00",
+        "arrivalTime": "2023-01-14T21:00:00.000+00:00",
         "departureAirportId": 8,
         "arrivalAirportId": 7,
-        "airlineId":7
+        "airlineId": 7
     }
 ]
