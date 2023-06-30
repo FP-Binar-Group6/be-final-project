@@ -2,7 +2,7 @@ package com.fpbinar6.code.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +26,17 @@ public class UserController {
     @GetMapping("/user")
     public ResponseEntity<Object> getAllUser() {
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, userService.getAllUser());
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Object> getUserById(@PathVariable("id") int id) {
+        try {
+            var user = userService.getUserById(id);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, user);
+            
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(Constants.ERROR_RETRIEVE_MSG, HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
     @PutMapping("/user")

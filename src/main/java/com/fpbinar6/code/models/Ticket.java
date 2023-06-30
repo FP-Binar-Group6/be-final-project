@@ -56,7 +56,7 @@ public class Ticket {
     @OneToOne(targetEntity = Seat.class, cascade = CascadeType.MERGE)
     private Seat seat;
 
-    @JoinColumn(name = "payment_id", referencedColumnName = "id")
+    @JoinColumn(name = "payment_id", referencedColumnName = "id", nullable = true)
     @ManyToOne(targetEntity = Payment.class, cascade = CascadeType.MERGE)
     private Payment payment;
 
