@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-@Component
+
 @Order(3)
 public class ClassSeeder implements CommandLineRunner {
     private final ClassRepository classRepository;

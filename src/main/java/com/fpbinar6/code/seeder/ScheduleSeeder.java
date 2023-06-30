@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fpbinar6.code.models.Airline;
 import com.fpbinar6.code.models.Airport;
 import com.fpbinar6.code.models.Schedule;
-import com.fpbinar6.code.models.dto.ScheduleRequestDTO;
 import com.fpbinar6.code.models.dto.ScheduleSeederDTO;
 import com.fpbinar6.code.repository.AirlineRepository;
 import com.fpbinar6.code.repository.AirportRepository;
@@ -23,7 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-@Component
+
 @Order(3)
 public class ScheduleSeeder implements CommandLineRunner {
 

@@ -7,6 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fpbinar6.code.models.dto.UserResponseDTO;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,45 +45,46 @@ public class User implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
     public String getUsername() {
-        // TODO Auto-generated method stub
         return email;
     }
 
     public String getPhoneNumber() {
-        // TODO Auto-generated method stub
         return phoneNumber;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        // TODO Auto-generated method stub
         return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        // TODO Auto-generated method stub
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        // TODO Auto-generated method stub
         return true;
     }
 
     @Override
     public boolean isEnabled() {
-        // TODO Auto-generated method stub
         return true;
     }
 
-
+    public UserResponseDTO convertToResponse() {
+        return UserResponseDTO.builder()
+                .userId(this.userId)
+                .name(this.name)
+                .email(this.email)
+                .phoneNumber(this.phoneNumber)
+                .role(this.role.name())
+                .build();
+    }
     
 }
