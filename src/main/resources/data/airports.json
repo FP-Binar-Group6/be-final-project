@@ -3,48 +3,56 @@
     "airportId": 1,
     "code": "CGK",
     "cityName": "Jakarta",
-    "name": "Soekarno-Hatta International Airport"
+    "name": "Soekarno-Hatta International Airport",
+    "cityImage" : "https://i.ibb.co/Wng0kYj/1-2.png"
   },
   {
     "airportId": 2,
     "code": "DPS",
     "cityName": "Denpasar",
-    "name": "Ngurah Rai International Airport"
+    "name": "Ngurah Rai International Airport",
+    "cityImage" : "https://i.ibb.co/y0KCvgc/2-2.jpg"
   },
   {
     "airportId": 3,
     "code": "SUB",
     "cityName": "Surabaya",
-    "name": "Juanda International Airport"
+    "name": "Juanda International Airport",
+    "cityImage" : "https://i.ibb.co/RBP4DtR/3-2.jpg"
   },
   {
     "airportId": 4,
     "code": "BDO",
     "cityName": "Bandung",
-    "name": "Husein Sastranegara International Airport"
+    "name": "Husein Sastranegara International Airport",
+    "cityImage" : "https://i.ibb.co/pz6N8q7/4-2.png"
   },
   {
     "airportId": 5,
     "code": "SRG",
     "cityName": "Semarang",
-    "name": "Achmad Yani International Airport"
+    "name": "Achmad Yani International Airport",
+    "cityImage" : "https://i.ibb.co/QD62Twq/5-2.jpg"
   },
   {
     "airportId": 6,
     "code": "MDC",
     "cityName": "Manado",
-    "name": "Sam Ratulangi International Airport"
+    "name": "Sam Ratulangi International Airport",
+    "cityImage" : "https://i.ibb.co/G0gDZ5M/6-2.jpg"
   },
   {
     "airportId": 7,
     "code": "JOG",
     "cityName": "Yogyakarta",
-    "name": "Adisutjipto International Airport"
+    "name": "Adisutjipto International Airport",
+    "cityImage" : "https://i.ibb.co/jRd9FQX/7-2.jpg"
   },
   {
     "airportId": 8,
     "code": "UPG",
     "cityName": "Makassar",
-    "name": "Sultan Hasanuddin International Airport"
+    "name": "Sultan Hasanuddin International Airport",
+    "cityImage" : "https://i.ibb.co/BKry1Tx/8-2.jpg"
   }
 ]
