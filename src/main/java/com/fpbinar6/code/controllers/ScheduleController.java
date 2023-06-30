@@ -37,14 +37,15 @@ public class ScheduleController {
     public ResponseEntity<Object> searchSchedules(
             @RequestParam(value = "departureDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate departureDate,
             @RequestParam(value = "departureAirportId", required = false) Integer departureAirportId,
-            @RequestParam(value = "arrivalAirportId", required = false) Integer arrivalAirportId) {
+            @RequestParam(value = "arrivalAirportId", required = false) Integer arrivalAirportId,
+            @RequestParam(value = "airlineId", required = false) Integer airlineId) {
         Timestamp departureTime = null;
         if (departureDate != null) {
             departureTime = Timestamp.valueOf(departureDate.atStartOfDay());
         }
 
         List<ScheduleResponseDTO> schedules = scheduleService.searchSchedules(departureTime, departureAirportId,
-                arrivalAirportId);
+                arrivalAirportId, airlineId);
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, schedules);
     }
 

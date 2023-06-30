@@ -58,6 +58,7 @@ public class AirportSeeder implements CommandLineRunner {
                 existingAirport.setCode(airport.getCode());
                 existingAirport.setName(airport.getName());
                 existingAirport.setCityName(airport.getCityName());
+                existingAirport.setCityImage(airport.getCityImage());
                 
                 airportRepository.save(existingAirport);
             } else {

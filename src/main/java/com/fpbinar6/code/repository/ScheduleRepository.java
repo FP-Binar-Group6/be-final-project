@@ -16,12 +16,14 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Integer> {
                         "WHERE (cast(:departureTime as timestamp) IS NULL OR s.departureTime >= cast(:departureTimeStart as timestamp) AND s.departureTime < cast(:departureTimeEnd as timestamp)) "
                         +
                         "AND (:departureAirportId IS NULL OR s.departureAirport.id = :departureAirportId) " +
-                        "AND (:arrivalAirportId IS NULL OR s.arrivalAirport.id = :arrivalAirportId) ")
+                        "AND (:arrivalAirportId IS NULL OR s.arrivalAirport.id = :arrivalAirportId) " +
+                        "AND (:airlineId IS NULL OR s.airline.id = :airlineId)" + "ORDER BY s.departureTime ASC")
         List<Schedule> searchSchedules(
                         @Param("departureTime") Timestamp departureTime,
                         @Param("departureTimeStart") Timestamp departureTimeStart,
                         @Param("departureTimeEnd") Timestamp departureTimeEnd,
                         @Param("departureAirportId") Integer departureAirportId,
-                        @Param("arrivalAirportId") Integer arrivalAirportId);
+                        @Param("arrivalAirportId") Integer arrivalAirportId,
+                        @Param("airlineId") Integer airlineId);
 
 }

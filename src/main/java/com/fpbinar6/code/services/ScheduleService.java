@@ -9,8 +9,8 @@ import com.fpbinar6.code.models.dto.ScheduleResponseDTO;
 
 public interface ScheduleService {
     List<ScheduleResponseDTO> getAllSchedule();
-    List<ScheduleResponseDTO> searchSchedules(Timestamp departureTime, Integer departureAirportId, Integer arrivalAirportId);
-    // List<ScheduleResponseDTO> searchSchedulesWithoutAirlineId(ScheduleRequestDTO scheduleRequest);
+    List<ScheduleResponseDTO> searchSchedules(Timestamp departureTime, Integer departureAirportId, Integer arrivalAirportId, Integer airlineId);
+   // List<ScheduleResponseDTO> searchSchedulesWithAirlineId(ScheduleRequestDTO scheduleRequest);
     List<ScheduleResponseDTO> getRandomSchedules(int count);
     ScheduleResponseDTO getScheduleById(int id);
     void deleteScheduleById(int id);

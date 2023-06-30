@@ -36,9 +36,6 @@ public class Payment {
     @Column(name = "booking_code", nullable = false, unique = true)
     private String bookingCode;
 
-    @JoinColumn(name = "ticket_id", referencedColumnName = "id", unique = false)
-    @OneToMany(targetEntity = Ticket.class, cascade = CascadeType.MERGE)
-    private List<Ticket> ticket;
 
     @Column(name = "total_price", nullable = false)
     private int totalPrice;
@@ -58,7 +55,6 @@ public class Payment {
         return PaymentResponseDTO.builder()
                 .paymentId(this.paymentId)
                 .bookingCode(this.bookingCode)
-                .ticket(this.ticket)
                 .totalPrice(this.totalPrice)
                 .paymentStatus(this.paymentStatus)
                 .userId(this.user.getUserId())

@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class PaymentResponseDTO {
     private int paymentId;
     private String bookingCode;
-    private List<Ticket> ticket;
+    private List<Ticket> tickets;
     private int totalPrice;
     private String paymentStatus;
     private int userId;

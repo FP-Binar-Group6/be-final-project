@@ -26,4 +26,7 @@ public class Airport implements Serializable{
     
     @Column(name = "city_name",nullable = false)
     private String cityName;
+
+    @Column(name = "city_image",nullable = false)
+    private String cityImage;
 }
