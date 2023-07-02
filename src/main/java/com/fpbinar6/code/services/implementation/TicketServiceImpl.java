@@ -30,7 +30,7 @@ public class TicketServiceImpl implements TicketService {
     final PaymentRepository paymentRepository;
 
     @Override
-    public TicketResponseDTO getTicketById(int id) {
+    public TicketResponseDTO getTicketById(Long id) {
         Optional<Ticket> ticket = ticketRepository.findById(id);
         if (ticket.isPresent()) {
             return ticket.get().convertToResponse();
@@ -48,7 +48,8 @@ public class TicketServiceImpl implements TicketService {
                     .orElseThrow(() -> new RuntimeException("Schedule not found"));
             var ticket = ticketRequest.toTicket(seat, schedule);
             var result = ticketRepository.save(ticket);
-
+            seat.setPicked(true);
+            seatRepository.save(seat);
             return result.convertToResponse();
 
         } else {
@@ -58,6 +59,8 @@ public class TicketServiceImpl implements TicketService {
                     .filter(s -> s.isPicked() == false).findFirst()
                     .orElseThrow(() -> new RuntimeException("Seat not found"));
             var ticket = ticketRequest.toTicket(seat, schedule);
+            seat.setPicked(true);
+            seatRepository.save(seat);
             var result = ticketRepository.save(ticket);
             return result.convertToResponse();
         }
@@ -65,35 +68,52 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public List<TicketResponseDTO> saveAllTickets(List<TicketRequestDTO> ticketRequests) {
-        List<TicketResponseDTO> ticketResponses = new ArrayList<>();
+    List<TicketResponseDTO> ticketResponses = new ArrayList<>();
 
-        for (TicketRequestDTO ticketRequest : ticketRequests) {
-            if (ticketRequest.getSeatId() != null) {
-                Seat seat = seatRepository.findById(ticketRequest.getSeatId())
-                        .orElseThrow(() -> new RuntimeException("Seat not found"));
-                Schedule schedule = scheduleRepository.findById(ticketRequest.getScheduleId())
-                        .orElseThrow(() -> new RuntimeException("Schedule not found"));
-                Ticket ticket = ticketRequest.toTicket(seat, schedule);
-                Ticket savedTicket = ticketRepository.save(ticket);
-                ticketResponses.add(savedTicket.convertToResponse());
-            } else {
-                Schedule schedule = scheduleRepository.findById(ticketRequest.getScheduleId())
-                        .orElseThrow(() -> new RuntimeException("Schedule not found"));
-                Seat seat = seatRepository.findByScheduleId(ticketRequest.getScheduleId()).stream()
-                        .filter(s -> !s.isPicked())
-                        .findFirst()
-                        .orElseThrow(() -> new RuntimeException("Seat not found"));
-                Ticket ticket = ticketRequest.toTicket(seat, schedule);
-                Ticket savedTicket = ticketRepository.save(ticket);
-                ticketResponses.add(savedTicket.convertToResponse());
-            }
+    for (TicketRequestDTO ticketRequest : ticketRequests) {
+        if (ticketRequest.getSeatId() != null) {
+            Seat seat = seatRepository.findById(ticketRequest.getSeatId())
+                    .orElseThrow(() -> new RuntimeException("Seat not found"));
+            Schedule schedule = scheduleRepository.findById(ticketRequest.getScheduleId())
+                    .orElseThrow(() -> new RuntimeException("Schedule not found"));
+            Ticket ticket = ticketRequest.toTicket(seat, schedule);
+            Ticket savedTicket = ticketRepository.save(ticket);
+
+            // Set isPicked to true for the associated seat
+            seat.setPicked(true);
+            seatRepository.save(seat);
+
+            // Build the response DTO with ticketId and seatId
+            TicketResponseDTO responseDTO = savedTicket.convertToResponse();
+
+            ticketResponses.add(responseDTO);
+        } else {
+            Schedule schedule = scheduleRepository.findById(ticketRequest.getScheduleId())
+                    .orElseThrow(() -> new RuntimeException("Schedule not found"));
+            Seat seat = seatRepository.findByScheduleId(ticketRequest.getScheduleId()).stream()
+                    .filter(s -> !s.isPicked())
+                    .findFirst()
+                    .orElseThrow(() -> new RuntimeException("Seat not found"));
+            Ticket ticket = ticketRequest.toTicket(seat, schedule);
+            Ticket savedTicket = ticketRepository.save(ticket);
+
+            // Set isPicked to true for the associated seat
+            seat.setPicked(true);
+            seatRepository.save(seat);
+
+            // Build the response DTO with ticketId and seatId
+            TicketResponseDTO responseDTO = savedTicket.convertToResponse();
+
+            ticketResponses.add(responseDTO);
         }
-
-        return ticketResponses;
     }
 
+    return ticketResponses;
+}
+
+
     @Override
-    public void deleteTicketById(int id) {
+    public void deleteTicketById(Long id) {
         Optional<Ticket> result = ticketRepository.findById(id);
         if (result.isEmpty()) {
             throw new RuntimeException("Data tidak ditemukan");

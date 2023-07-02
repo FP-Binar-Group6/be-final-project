@@ -38,7 +38,7 @@ public class TicketController {
     }
 
     @GetMapping("/ticket/{id}")
-    public ResponseEntity<Object> getTicketById(@PathVariable("id") int id) {
+    public ResponseEntity<Object> getTicketById(@PathVariable("id") Long id) {
         try {
             var ticket = ticketService.getTicketById(id);
             return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, ticket);
@@ -50,8 +50,8 @@ public class TicketController {
     @PostMapping("/ticket")
     public ResponseEntity<Object> saveTicket(@RequestBody TicketRequestDTO ticketRequest) {
         try {
-            ticketService.saveTicket(ticketRequest);
-            return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, ticketRequest);
+            var savedTicket = ticketService.saveTicket(ticketRequest);
+            return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, savedTicket);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
         }
@@ -68,7 +68,7 @@ public class TicketController {
     }
 
     @DeleteMapping("/ticket/{id}")
-    public ResponseEntity<Object> deleteTicketById(@PathVariable("id") int id) {
+    public ResponseEntity<Object> deleteTicketById(@PathVariable("id") Long id) {
         try {
             ticketService.deleteTicketById(id);
             return ResponseHandler.generateResponse(Constants.SUCCESS_DELETE_MSG, HttpStatus.OK, id);

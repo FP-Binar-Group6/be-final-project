@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.fpbinar6.code.models.Ticket;
 
 @Repository
-public interface TicketRepository extends JpaRepository<Ticket, Integer> {
+public interface TicketRepository extends JpaRepository<Ticket, Long> {
     
     @Query(value = "SELECT * FROM public.ticket t WHERE t.payment_id = :id", nativeQuery = true)
     List<Ticket> findByPaymentId(int id);

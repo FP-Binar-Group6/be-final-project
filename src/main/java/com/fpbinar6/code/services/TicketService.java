@@ -6,9 +6,9 @@ import com.fpbinar6.code.models.dto.TicketRequestDTO;
 import com.fpbinar6.code.models.dto.TicketResponseDTO;
 
 public interface TicketService {
-    public TicketResponseDTO getTicketById(int id);
+    public TicketResponseDTO getTicketById(Long id);
     public TicketResponseDTO saveTicket(TicketRequestDTO ticketRequest);
     public List<TicketResponseDTO> getTicketByPaymentId(int id);
-    public void deleteTicketById(int id);
+    public void deleteTicketById(Long id);
     public List<TicketResponseDTO> saveAllTickets(List<TicketRequestDTO> ticketRequests);
 }
