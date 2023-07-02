@@ -12,6 +12,7 @@ public class Constants {
     public static final String ERROR_DELETE_MSG = "Failed to delete data!";
     public static final String ERROR_SAVE_MSG = "Failed to save data!";
     public static final String LOGGED_USER = "user";
+    public static final String SUCCESS_PAY_MSG = "Successfully pay";
 
 
     public static final String ACCESS_TOKEN = "accessToken";

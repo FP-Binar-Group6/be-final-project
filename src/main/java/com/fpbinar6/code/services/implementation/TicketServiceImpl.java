@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.fpbinar6.code.models.Payment;
 import com.fpbinar6.code.models.Schedule;
 import com.fpbinar6.code.models.Seat;
 import com.fpbinar6.code.models.Ticket;
@@ -68,49 +67,50 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public List<TicketResponseDTO> saveAllTickets(List<TicketRequestDTO> ticketRequests) {
-    List<TicketResponseDTO> ticketResponses = new ArrayList<>();
+        List<TicketResponseDTO> ticketResponses = new ArrayList<>();
 
-    for (TicketRequestDTO ticketRequest : ticketRequests) {
-        if (ticketRequest.getSeatId() != null) {
-            Seat seat = seatRepository.findById(ticketRequest.getSeatId())
-                    .orElseThrow(() -> new RuntimeException("Seat not found"));
-            Schedule schedule = scheduleRepository.findById(ticketRequest.getScheduleId())
-                    .orElseThrow(() -> new RuntimeException("Schedule not found"));
-            Ticket ticket = ticketRequest.toTicket(seat, schedule);
-            Ticket savedTicket = ticketRepository.save(ticket);
+        for (TicketRequestDTO ticketRequest : ticketRequests) {
+            if (ticketRequest.getSeatId() != null) {
+                Seat seat = seatRepository.findById(ticketRequest.getSeatId())
+                        .orElseThrow(() -> new RuntimeException("Seat not found"));
+                Schedule schedule = scheduleRepository.findById(ticketRequest.getScheduleId())
+                        .orElseThrow(() -> new RuntimeException("Schedule not found"));
+                Ticket ticket = ticketRequest.toTicket(seat, schedule);
+                Ticket savedTicket = ticketRepository.save(ticket);
 
-            // Set isPicked to true for the associated seat
-            seat.setPicked(true);
-            seatRepository.save(seat);
+                // Set isPicked to true for the associated seat
+                seat.setPicked(true);
+                seatRepository.save(seat);
 
-            // Build the response DTO with ticketId and seatId
-            TicketResponseDTO responseDTO = savedTicket.convertToResponse();
+                // Build the response DTO with ticketId and seatId
+                TicketResponseDTO responseDTO = savedTicket.convertToResponse();
 
-            ticketResponses.add(responseDTO);
-        } else {
-            Schedule schedule = scheduleRepository.findById(ticketRequest.getScheduleId())
-                    .orElseThrow(() -> new RuntimeException("Schedule not found"));
-            Seat seat = seatRepository.findByScheduleId(ticketRequest.getScheduleId()).stream()
-                    .filter(s -> !s.isPicked())
-                    .findFirst()
-                    .orElseThrow(() -> new RuntimeException("Seat not found"));
-            Ticket ticket = ticketRequest.toTicket(seat, schedule);
-            Ticket savedTicket = ticketRepository.save(ticket);
+                ticketResponses.add(responseDTO);
+            } else {
+                Schedule schedule = scheduleRepository.findById(ticketRequest.getScheduleId())
+                        .orElseThrow(() -> new RuntimeException("Schedule not found"));
+                Seat seat = seatRepository.findByScheduleId(ticketRequest.getScheduleId()).stream()
+                        .filter(s -> !s.isPicked())
+                        .findFirst()
+                        .orElseThrow(() -> new RuntimeException("Seat not found"));
+                Ticket ticket = ticketRequest.toTicket(seat, schedule);
+                Ticket savedTicket = ticketRepository.save(ticket);
 
-            // Set isPicked to true for the associated seat
-            seat.setPicked(true);
-            seatRepository.save(seat);
+                // Set isPicked to true for the associated seat
+                seat.setPicked(true);
+                seatRepository.save(seat);
 
-            // Build the response DTO with ticketId and seatId
-            TicketResponseDTO responseDTO = savedTicket.convertToResponse();
+                // Build the response DTO with ticketId and seatId
+                TicketResponseDTO responseDTO = savedTicket.convertToResponse();
 
-            ticketResponses.add(responseDTO);
+                ticketResponses.add(responseDTO);
+            }
         }
+
+        return ticketResponses;
     }
 
-    return ticketResponses;
-}
-
+    
 
     @Override
     public void deleteTicketById(Long id) {

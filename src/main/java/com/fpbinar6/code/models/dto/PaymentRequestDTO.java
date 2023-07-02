@@ -5,22 +5,27 @@ import com.fpbinar6.code.models.PaymentMethod;
 import com.fpbinar6.code.models.User;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaymentRequestDTO {
     private int userId;
     private int paymentMethodId;
 
-    public Payment toPayment(User user, PaymentMethod paymentMethod) {
+    public Payment toPayment() {
+        User user = new User();
+        user.setUserId(this.userId);
+
+        PaymentMethod paymentMethod = new PaymentMethod();
+        paymentMethod.setPaymentMethodId(this.paymentMethodId);
+
         return Payment.builder()
                 .user(user)
                 .paymentMethod(paymentMethod)
                 .build();
     }
 }
+
