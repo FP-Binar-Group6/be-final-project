@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fpbinar6.code.models.dto.TicketBookingResponseDTO;
 import com.fpbinar6.code.models.dto.TicketRequestDTO;
 import com.fpbinar6.code.models.dto.TicketResponseDTO;
 import com.fpbinar6.code.services.TicketService;
@@ -60,7 +61,7 @@ public class TicketController {
     @PostMapping("/tickets")
     public ResponseEntity<Object> saveAllTickets(@RequestBody List<TicketRequestDTO> ticketRequests) {
         try {
-            List<TicketResponseDTO> savedTickets = ticketService.saveAllTickets(ticketRequests);
+            TicketBookingResponseDTO savedTickets = ticketService.saveAllTickets(ticketRequests);
             return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, savedTickets);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());

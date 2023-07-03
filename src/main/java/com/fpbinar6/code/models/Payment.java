@@ -37,7 +37,7 @@ public class Payment {
     @Column(name = "booking_code", unique = true)
     private String bookingCode;
 
-    @Column(name = "total_price", nullable = false)
+    @Column(name = "total_price")
     private int totalPrice;
 
     @Column(name = "payment_status", nullable = false)

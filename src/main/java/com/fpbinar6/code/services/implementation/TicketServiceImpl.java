@@ -6,9 +6,11 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.fpbinar6.code.models.Payment;
 import com.fpbinar6.code.models.Schedule;
 import com.fpbinar6.code.models.Seat;
 import com.fpbinar6.code.models.Ticket;
+import com.fpbinar6.code.models.dto.TicketBookingResponseDTO;
 import com.fpbinar6.code.models.dto.TicketRequestDTO;
 import com.fpbinar6.code.models.dto.TicketResponseDTO;
 import com.fpbinar6.code.repository.PaymentRepository;
@@ -16,6 +18,7 @@ import com.fpbinar6.code.repository.ScheduleRepository;
 import com.fpbinar6.code.repository.SeatRepository;
 import com.fpbinar6.code.repository.TicketRepository;
 import com.fpbinar6.code.services.TicketService;
+import com.fpbinar6.code.utils.GenerateRandomString;
 
 import lombok.RequiredArgsConstructor;
 
@@ -66,8 +69,16 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public List<TicketResponseDTO> saveAllTickets(List<TicketRequestDTO> ticketRequests) {
+    public TicketBookingResponseDTO saveAllTickets(List<TicketRequestDTO> ticketRequests) {
+
+        String bookingCode = GenerateRandomString.generateRandomString(6);
+        Payment payment = Payment.builder()
+                .bookingCode(bookingCode)
+                .build();
+        Payment savedPayment = paymentRepository.save(payment);
+
         List<TicketResponseDTO> ticketResponses = new ArrayList<>();
+        int totalPrice = 0;
 
         for (TicketRequestDTO ticketRequest : ticketRequests) {
             if (ticketRequest.getSeatId() != null) {
@@ -76,12 +87,14 @@ public class TicketServiceImpl implements TicketService {
                 Schedule schedule = scheduleRepository.findById(ticketRequest.getScheduleId())
                         .orElseThrow(() -> new RuntimeException("Schedule not found"));
                 Ticket ticket = ticketRequest.toTicket(seat, schedule);
+                ticket.setPayment(savedPayment);
                 Ticket savedTicket = ticketRepository.save(ticket);
 
                 // Set isPicked to true for the associated seat
                 seat.setPicked(true);
                 seatRepository.save(seat);
-
+                
+                totalPrice += ticket.getSeat().getKelas().getPrice();
                 // Build the response DTO with ticketId and seatId
                 TicketResponseDTO responseDTO = savedTicket.convertToResponse();
 
@@ -94,23 +107,31 @@ public class TicketServiceImpl implements TicketService {
                         .findFirst()
                         .orElseThrow(() -> new RuntimeException("Seat not found"));
                 Ticket ticket = ticketRequest.toTicket(seat, schedule);
+                ticket.setPayment(savedPayment);
                 Ticket savedTicket = ticketRepository.save(ticket);
 
                 // Set isPicked to true for the associated seat
                 seat.setPicked(true);
                 seatRepository.save(seat);
 
+                totalPrice += ticket.getSeat().getKelas().getPrice();
                 // Build the response DTO with ticketId and seatId
                 TicketResponseDTO responseDTO = savedTicket.convertToResponse();
 
                 ticketResponses.add(responseDTO);
             }
         }
+        savedPayment.setTotalPrice(totalPrice);
+        paymentRepository.save(savedPayment);
 
-        return ticketResponses;
+        TicketBookingResponseDTO bookingResponseDTO = TicketBookingResponseDTO.builder()
+            .tickets(ticketResponses)
+            .bookingCode(bookingCode)
+            .totalPrice(totalPrice)
+            .build();
+
+        return bookingResponseDTO;
     }
-
-    
 
     @Override
     public void deleteTicketById(Long id) {
