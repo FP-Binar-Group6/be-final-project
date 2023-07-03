@@ -61,7 +61,7 @@ public class TicketController {
     @PostMapping("/tickets")
     public ResponseEntity<Object> saveAllTickets(@RequestBody List<TicketRequestDTO> ticketRequests) {
         try {
-            TicketBookingResponseDTO savedTickets = ticketService.saveAllTickets(ticketRequests);
+            var savedTickets = ticketService.saveAllTickets(ticketRequests);
             return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, savedTickets);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
