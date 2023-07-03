@@ -42,7 +42,7 @@ public class Payment {
 
     @Column(name = "payment_status", nullable = false)
     @Default
-    private String paymentStatus = "not paid";
+    private String paymentStatus = "issued";
 
     @JoinColumn(name = "user_id", referencedColumnName = "id", unique = false)
     @ManyToOne(targetEntity = User.class, cascade = CascadeType.MERGE)

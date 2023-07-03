@@ -77,15 +77,15 @@ public class ScheduleController {
         }
     }
 
-    @PostMapping("/schedule")
-    public ResponseEntity<Object> saveSchedule(@RequestBody ScheduleRequestDTO scheduleRequest) {
-        try {
-            scheduleService.saveSchedule(scheduleRequest);
-            return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, scheduleRequest);
+    // @PostMapping("/schedule")
+    // public ResponseEntity<Object> saveSchedule(@RequestBody ScheduleRequestDTO scheduleRequest) {
+    //     try {
+    //         scheduleService.saveSchedule(scheduleRequest);
+    //         return ResponseHandler.generateResponse(Constants.SUCCESS_SAVE_MSG, HttpStatus.OK, scheduleRequest);
 
-        } catch (Exception e) {
-            return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
-        }
-    }
+    //     } catch (Exception e) {
+    //         return ResponseHandler.generateResponse(Constants.ERROR_SAVE_MSG, HttpStatus.BAD_REQUEST, e.getMessage());
+    //     }
+    // }
 
 }

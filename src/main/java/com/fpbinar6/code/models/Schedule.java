@@ -49,6 +49,10 @@ import lombok.NoArgsConstructor;
         @ManyToOne(targetEntity = Airline.class, cascade = CascadeType.MERGE)
         private Airline airline;
 
+        @JoinColumn(name = "class_id", referencedColumnName = "id", unique = false)
+        @ManyToOne(targetEntity = Class.class, cascade = CascadeType.MERGE)
+        private Class kelas;
+
         public ScheduleResponseDTO convertToResponse() {
             return ScheduleResponseDTO.builder()
                     .scheduleId(this.scheduleId)
@@ -57,6 +61,7 @@ import lombok.NoArgsConstructor;
                     .departureAirport(this.departureAirport)
                     .arrivalAirport(this.arrivalAirport)
                     .airline(this.airline)
+                    .kelas(this.kelas)
                     .build();
         }
     }

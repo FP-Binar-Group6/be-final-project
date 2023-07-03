@@ -17,7 +17,9 @@ import com.fpbinar6.code.models.dto.ScheduleRequestDTO;
 import com.fpbinar6.code.models.dto.ScheduleResponseDTO;
 import com.fpbinar6.code.repository.AirlineRepository;
 import com.fpbinar6.code.repository.AirportRepository;
+import com.fpbinar6.code.repository.ClassRepository;
 import com.fpbinar6.code.repository.ScheduleRepository;
+import com.fpbinar6.code.repository.SeatRepository;
 import com.fpbinar6.code.services.ScheduleService;
 
 import lombok.RequiredArgsConstructor;
@@ -29,6 +31,8 @@ public class ScheduleServiceImpl implements ScheduleService {
     final ScheduleRepository scheduleRepository;
     final AirportRepository airportRepository;
     final AirlineRepository airlineRepository;
+    final SeatRepository seatRepository;
+    final ClassRepository classRepository;
 
     @Override
     public List<ScheduleResponseDTO> getAllSchedule() {
@@ -100,18 +104,20 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     }
 
-    @Override
-    public ScheduleResponseDTO saveSchedule(ScheduleRequestDTO scheduleRequest) {
-        var airline = airlineRepository.findById(scheduleRequest.getAirlineId())
-                .orElseThrow(() -> new RuntimeException("Airline not found"));
-        var departureAirport = airportRepository.findById(scheduleRequest.getDepartureAirportId())
-                .orElseThrow(() -> new RuntimeException("Departure Airport not found"));
-        var arrivalAirport = airportRepository.findById(scheduleRequest.getArrivalAirportId())
-                .orElseThrow(() -> new RuntimeException("Arrival Airport not found"));
-        var schedule = scheduleRequest.toSchedule(departureAirport, arrivalAirport, airline);
-        var result = scheduleRepository.save(schedule);
-        return result.convertToResponse();
-    }
+    // @Override
+    // public ScheduleResponseDTO saveSchedule(ScheduleRequestDTO scheduleRequest) {
+    //     var airline = airlineRepository.findById(scheduleRequest.getAirlineId())
+    //             .orElseThrow(() -> new RuntimeException("Airline not found"));
+    //     var departureAirport = airportRepository.findById(scheduleRequest.getDepartureAirportId())
+    //             .orElseThrow(() -> new RuntimeException("Departure Airport not found"));
+    //     var arrivalAirport = airportRepository.findById(scheduleRequest.getArrivalAirportId())
+    //             .orElseThrow(() -> new RuntimeException("Arrival Airport not found"));
+    //     var kelas = classRepository.findById(scheduleRequest.getClassId())
+    //             .orElseThrow(() -> new RuntimeException("Class not found"));
+    //     var schedule = scheduleRequest.toSchedule(departureAirport, arrivalAirport, airline);
+    //     var result = scheduleRepository.save(schedule);
+    //     return result.convertToResponse();
+    // }
 
     @Override
     public void deleteScheduleById(int id) {

@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import com.fpbinar6.code.models.Airline;
 import com.fpbinar6.code.models.Airport;
 import com.fpbinar6.code.models.Schedule;
+import com.fpbinar6.code.models.Class;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,13 +23,14 @@ public class ScheduleRequestDTO {
     private int arrivalAirportId;
     private int airlineId;
 
-    public Schedule toSchedule(Airport departureAirport, Airport arrivalAirport, Airline airline) {
+    public Schedule toSchedule(Class kelas, Airport departureAirport, Airport arrivalAirport, Airline airline) {
         return Schedule.builder()
                 .departureTime(this.departureTime)
                 .arrivalTime(this.arrivalTime)
                 .departureAirport(departureAirport)
                 .arrivalAirport(arrivalAirport)
                 .airline(airline)
+                .kelas(kelas)
                 .build();
     }
 

@@ -46,8 +46,7 @@ public class SeatServiceImpl implements SeatService{
     @Override
     public SeatResponseDTO saveSeat(SeatRequestDTO seatRequest) {
         var schedule = scheduleRepository.findById(seatRequest.getScheduleId()).orElseThrow(() -> new RuntimeException("Schedule not found"));
-        var kelas = classRepository.findById(seatRequest.getClassId()).orElseThrow(() -> new RuntimeException("Class not found"));
-        var seat = seatRequest.toSeat(kelas, schedule);
+        var seat = seatRequest.toSeat(schedule);
         seat.setPicked(false);
         var result = seatRepository.save(seat);
 

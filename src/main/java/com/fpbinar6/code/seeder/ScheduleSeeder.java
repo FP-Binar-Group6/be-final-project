@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fpbinar6.code.models.Airline;
 import com.fpbinar6.code.models.Airport;
 import com.fpbinar6.code.models.Schedule;
+import com.fpbinar6.code.models.Class;
 import com.fpbinar6.code.models.dto.ScheduleSeederDTO;
 import com.fpbinar6.code.repository.AirlineRepository;
 import com.fpbinar6.code.repository.AirportRepository;
+import com.fpbinar6.code.repository.ClassRepository;
 import com.fpbinar6.code.repository.ScheduleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +25,20 @@ import java.io.InputStream;
 import java.util.List;
 
 
-@Order(3)
+@Order(5)
 public class ScheduleSeeder implements CommandLineRunner {
 
     private final AirportRepository airportRepository;
     private final AirlineRepository airlineRepository;
     private final ScheduleRepository scheduleRepository;
+    private final ClassRepository classRepository;
 
     @Autowired
-    public ScheduleSeeder(AirportRepository airportRepository, AirlineRepository airlineRepository, ScheduleRepository scheduleRepository) {
+    public ScheduleSeeder(ClassRepository classRepository, AirportRepository airportRepository, AirlineRepository airlineRepository, ScheduleRepository scheduleRepository) {
         this.airportRepository = airportRepository;
         this.airlineRepository = airlineRepository;
         this.scheduleRepository = scheduleRepository;
+        this.classRepository = classRepository;
     }
 
     @Override
@@ -66,7 +70,7 @@ public class ScheduleSeeder implements CommandLineRunner {
         Airport departureAirport = airportRepository.findById(scheduleDTO.getDepartureAirportId()).orElse(null);
         Airport arrivalAirport = airportRepository.findById(scheduleDTO.getArrivalAirportId()).orElse(null);
         Airline airline = airlineRepository.findById(scheduleDTO.getAirlineId()).orElse(null);
-
+        Class kelas = classRepository.findById(scheduleDTO.getClassId()).orElse(null);
         // Check if a schedule with the same ID exists in the database
         int scheduleId = scheduleDTO.getScheduleId();
         Schedule existingSchedule = scheduleRepository.findById(scheduleId).orElse(null);
@@ -75,10 +79,10 @@ public class ScheduleSeeder implements CommandLineRunner {
         Schedule schedule;
         if (existingSchedule != null) {
             // Update the existing schedule
-            schedule = scheduleDTO.toSchedule(existingSchedule, departureAirport, arrivalAirport, airline);
+            schedule = scheduleDTO.toSchedule(kelas, existingSchedule, departureAirport, arrivalAirport, airline);
         } else {
             // Create a new schedule
-            schedule = scheduleDTO.toSchedule(departureAirport, arrivalAirport, airline);
+            schedule = scheduleDTO.toSchedule(kelas, departureAirport, arrivalAirport, airline);
         }
 
         // Save the Schedule instance to the database

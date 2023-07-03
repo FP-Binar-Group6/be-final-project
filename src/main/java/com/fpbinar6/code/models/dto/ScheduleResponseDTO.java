@@ -5,12 +5,12 @@ import java.sql.Timestamp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fpbinar6.code.models.Airline;
 import com.fpbinar6.code.models.Airport;
+import com.fpbinar6.code.models.Class;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Builder.Default;
 
 @Data
 @Builder
@@ -27,7 +27,5 @@ public class ScheduleResponseDTO {
     private Airport departureAirport;
     private Airport arrivalAirport;
     private Airline airline;
-    
-    @Default
-    private int price = 1000000;
+    private Class kelas;
 }

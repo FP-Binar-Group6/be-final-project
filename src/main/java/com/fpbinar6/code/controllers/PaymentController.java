@@ -14,10 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fpbinar6.code.models.Payment;
+import com.fpbinar6.code.models.PaymentMethod;
+import com.fpbinar6.code.models.User;
 import com.fpbinar6.code.models.dto.PaymentAndTicketRequestDTO;
+import com.fpbinar6.code.models.dto.PaymentRequestDTO;
 import com.fpbinar6.code.models.dto.PaymentResponseDTO;
 import com.fpbinar6.code.models.dto.TicketResponseDTO;
+import com.fpbinar6.code.repository.PaymentMethodRepository;
 import com.fpbinar6.code.repository.PaymentRepository;
+import com.fpbinar6.code.repository.UserRepository;
 import com.fpbinar6.code.services.PaymentService;
 import com.fpbinar6.code.utils.Constants;
 import com.fpbinar6.code.utils.ResponseHandler;
@@ -31,12 +36,38 @@ public class PaymentController {
 
     final PaymentService paymentService;
     final PaymentRepository paymentRepository;
+    final UserRepository userRepository;
+    final PaymentMethodRepository paymentMethodRepository;
 
     @PostMapping("/payment/tickets")
     public ResponseEntity<List<TicketResponseDTO>> savePaymentAndTickets(
             @RequestBody PaymentAndTicketRequestDTO requestDTO) {
         List<TicketResponseDTO> savedTickets = paymentService.savePaymentAndTickets(requestDTO);
         return ResponseEntity.ok(savedTickets);
+    }
+
+    @PutMapping("/payment/book/{paymentId}")
+    public ResponseEntity<Object> updatePaymentData(
+            @PathVariable("paymentId") Integer paymentId,
+            @RequestBody PaymentRequestDTO paymentRequestDTO
+    ) {
+        Payment payment = paymentRepository.findById(paymentId)
+                .orElseThrow(() -> new RuntimeException("Payment not found"));
+
+        User user = userRepository.findById(paymentRequestDTO.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        PaymentMethod paymentMethod = paymentMethodRepository.findById(paymentRequestDTO.getPaymentMethodId())
+                .orElseThrow(() -> new RuntimeException("Payment method not found"));
+
+        // Update payment data
+        payment.setUser(user);
+        payment.setPaymentMethod(paymentMethod);
+
+        // Save the updated payment
+        paymentRepository.save(payment);
+
+        return ResponseHandler.generateResponse(Constants.SUCCESS_EDIT_MSG, HttpStatus.OK, payment);
     }
 
     @PutMapping("/payment/pay/{paymentId}")

@@ -10,6 +10,7 @@ import com.fpbinar6.code.models.Schedule;
 import com.fpbinar6.code.models.Seat;
 import com.fpbinar6.code.models.Ticket;
 import com.fpbinar6.code.models.dto.PaymentAndTicketRequestDTO;
+import com.fpbinar6.code.models.dto.PaymentRequestDTO;
 import com.fpbinar6.code.models.dto.TicketRequestDTO;
 import com.fpbinar6.code.models.dto.TicketResponseDTO;
 import com.fpbinar6.code.repository.PaymentRepository;

@@ -14,5 +14,5 @@ public interface ScheduleService {
     List<ScheduleResponseDTO> getRandomSchedules(int count);
     ScheduleResponseDTO getScheduleById(int id);
     void deleteScheduleById(int id);
-    ScheduleResponseDTO saveSchedule(ScheduleRequestDTO scheduleRequest);
+    //ScheduleResponseDTO saveSchedule(ScheduleRequestDTO scheduleRequest);
 }

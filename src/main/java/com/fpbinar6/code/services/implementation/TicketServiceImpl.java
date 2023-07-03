@@ -58,7 +58,7 @@ public class TicketServiceImpl implements TicketService {
             seat.setPicked(true);
             seatRepository.save(seat);
 
-            int totalPrice = savedTicket.getSeat().getKelas().getPrice();
+            int totalPrice = savedTicket.getSchedule().getKelas().getPrice();
 
             savedPayment.setTotalPrice(totalPrice);
             paymentRepository.save(savedPayment);
@@ -80,7 +80,7 @@ public class TicketServiceImpl implements TicketService {
             seat.setPicked(true);
             seatRepository.save(seat);
 
-            int totalPrice = savedTicket.getSeat().getKelas().getPrice();
+            int totalPrice = savedTicket.getSchedule().getKelas().getPrice();
 
             savedPayment.setTotalPrice(totalPrice);
             paymentRepository.save(savedPayment);
@@ -121,7 +121,7 @@ public class TicketServiceImpl implements TicketService {
                 seat.setPicked(true);
                 seatRepository.save(seat);
 
-                totalPrice += ticket.getSeat().getKelas().getPrice();
+                totalPrice += ticket.getSchedule().getKelas().getPrice();
                 // Build the response DTO with ticketId and seatId
                 TicketResponseDTO responseDTO = savedTicket.convertToResponse();
 
@@ -141,7 +141,7 @@ public class TicketServiceImpl implements TicketService {
                 seat.setPicked(true);
                 seatRepository.save(seat);
 
-                totalPrice += ticket.getSeat().getKelas().getPrice();
+                totalPrice += ticket.getSchedule().getKelas().getPrice();
                 // Build the response DTO with ticketId and seatId
                 TicketResponseDTO responseDTO = savedTicket.convertToResponse();
 

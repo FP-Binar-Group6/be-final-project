@@ -16,11 +16,9 @@ import lombok.NoArgsConstructor;
 public class SeatRequestDTO {
     private String seatNumber;
     private int scheduleId;
-    private int classId;
 
-    public Seat toSeat(Class kelas, Schedule schedule){
+    public Seat toSeat(Schedule schedule){
         return Seat.builder()
-                .kelas(kelas)
                 .schedule(schedule)
                 .seatNumber(this.seatNumber)
                 .build();

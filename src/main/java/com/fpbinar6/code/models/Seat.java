@@ -35,10 +35,6 @@ public class Seat {
     @Column(name = "is_picked")
     private boolean isPicked;
 
-    @JoinColumn(name = "class_id", referencedColumnName = "id", nullable = false, unique = false)
-    @ManyToOne(targetEntity = Class.class, cascade = CascadeType.MERGE)
-    private Class kelas;
-
     @JoinColumn(name = "schedule_id", referencedColumnName = "id", nullable = false, unique = false)
     @ManyToOne(targetEntity = Schedule.class, cascade = CascadeType.MERGE)
     private Schedule schedule;
@@ -47,7 +43,6 @@ public class Seat {
         return SeatResponseDTO.builder()
                 .seatId(this.seatId)
                 .seatNumber(this.seatNumber)
-                .kelas(this.kelas)
                 .isPicked(this.isPicked)
                 .build();
     }
