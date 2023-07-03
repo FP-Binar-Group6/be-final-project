@@ -44,7 +44,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public List<ScheduleResponseDTO> searchSchedules(Timestamp departureTime, Integer departureAirportId,
-            Integer arrivalAirportId, Integer airlineId) {
+            Integer arrivalAirportId, Integer airlineId, String className) {
         Timestamp departureTimeStart = null;
         Timestamp departureTimeEnd = null;
 
@@ -62,7 +62,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         List<Schedule> result = scheduleRepository.searchSchedules(departureTime, departureTimeStart, departureTimeEnd,
                 departureAirportId,
-                arrivalAirportId, airlineId);
+                arrivalAirportId, airlineId, className);
 
         return result.stream()
                 .map(Schedule::convertToResponse)

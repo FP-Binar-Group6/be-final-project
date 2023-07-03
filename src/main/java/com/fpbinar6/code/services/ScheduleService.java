@@ -9,7 +9,7 @@ import com.fpbinar6.code.models.dto.ScheduleResponseDTO;
 
 public interface ScheduleService {
     List<ScheduleResponseDTO> getAllSchedule();
-    List<ScheduleResponseDTO> searchSchedules(Timestamp departureTime, Integer departureAirportId, Integer arrivalAirportId, Integer airlineId);
+    List<ScheduleResponseDTO> searchSchedules(Timestamp departureTime, Integer departureAirportId, Integer arrivalAirportId, Integer airlineId, String className);
    // List<ScheduleResponseDTO> searchSchedulesWithAirlineId(ScheduleRequestDTO scheduleRequest);
     List<ScheduleResponseDTO> getRandomSchedules(int count);
     ScheduleResponseDTO getScheduleById(int id);

@@ -13,17 +13,21 @@ import com.fpbinar6.code.models.Schedule;
 public interface ScheduleRepository extends JpaRepository<Schedule, Integer> {
 
         @Query("SELECT s FROM Schedule s " +
+                        "JOIN s.kelas c " +
                         "WHERE (cast(:departureTime as timestamp) IS NULL OR s.departureTime >= cast(:departureTimeStart as timestamp) AND s.departureTime < cast(:departureTimeEnd as timestamp)) "
                         +
                         "AND (:departureAirportId IS NULL OR s.departureAirport.id = :departureAirportId) " +
                         "AND (:arrivalAirportId IS NULL OR s.arrivalAirport.id = :arrivalAirportId) " +
-                        "AND (:airlineId IS NULL OR s.airline.id = :airlineId)" + "ORDER BY s.departureTime ASC")
+                        "AND (:airlineId IS NULL OR s.airline.id = :airlineId) " +
+                        "AND (:className IS NULL OR c.name = :className) " +
+                        "ORDER BY s.departureTime ASC")
         List<Schedule> searchSchedules(
                         @Param("departureTime") Timestamp departureTime,
                         @Param("departureTimeStart") Timestamp departureTimeStart,
                         @Param("departureTimeEnd") Timestamp departureTimeEnd,
                         @Param("departureAirportId") Integer departureAirportId,
                         @Param("arrivalAirportId") Integer arrivalAirportId,
-                        @Param("airlineId") Integer airlineId);
+                        @Param("airlineId") Integer airlineId,
+                        @Param("className") String className);
 
 }
