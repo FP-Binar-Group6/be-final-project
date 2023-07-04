@@ -20,7 +20,7 @@ import com.fpbinar6.code.models.dto.SeatSeederDTO;
 import com.fpbinar6.code.repository.ScheduleRepository;
 import com.fpbinar6.code.repository.SeatRepository;
 
-@Component
+
 @Order(1)
 public class SeatSeeder implements CommandLineRunner {
 
