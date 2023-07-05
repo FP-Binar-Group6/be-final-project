@@ -16,11 +16,13 @@ import lombok.NoArgsConstructor;
 public class SeatRequestDTO {
     private String seatNumber;
     private int scheduleId;
+    private boolean isPicked;
 
     public Seat toSeat(Schedule schedule){
         return Seat.builder()
                 .schedule(schedule)
                 .seatNumber(this.seatNumber)
+                .isPicked(this.isPicked)
                 .build();
     }
 

@@ -73,7 +73,7 @@ public class TicketServiceImpl implements TicketService {
                     .orElseThrow(() -> new RuntimeException("Schedule not found"));
             var seat = seatRepository.findByScheduleId(ticketRequest.getScheduleId()).stream()
                     .filter(s -> !s.isPicked()).findFirst()
-                    .orElseThrow(() -> new RuntimeException("Seat not found"));
+                    .orElseThrow(() -> new RuntimeException("Seat Full Booked"));
             var ticket = ticketRequest.toTicket(seat, schedule);
             ticket.setPayment(savedPayment);
             var savedTicket = ticketRepository.save(ticket);
@@ -132,7 +132,7 @@ public class TicketServiceImpl implements TicketService {
                 Seat seat = seatRepository.findByScheduleId(ticketRequest.getScheduleId()).stream()
                         .filter(s -> !s.isPicked())
                         .findFirst()
-                        .orElseThrow(() -> new RuntimeException("Seat not found"));
+                        .orElseThrow(() -> new RuntimeException("Seat Full Booked"));
                 Ticket ticket = ticketRequest.toTicket(seat, schedule);
                 ticket.setPayment(savedPayment);
                 Ticket savedTicket = ticketRepository.save(ticket);

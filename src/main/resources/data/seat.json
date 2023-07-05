@@ -1,0 +1,502 @@
+[
+  {
+    "seatId": "1",
+    "scheduleId": "1",
+    "seatNumber": "A1"
+  },
+  {
+    "seatId": "2",
+    "scheduleId": "1",
+    "seatNumber": "A2"
+  },
+  {
+    "seatId": "3",
+    "scheduleId": "1",
+    "seatNumber": "A3"
+  },
+  {
+    "seatId": "4",
+    "scheduleId": "1",
+    "seatNumber": "A4"
+  },
+  {
+    "seatId": "5",
+    "scheduleId": "1",
+    "seatNumber": "A5"
+  },
+  {
+    "seatId": "6",
+    "scheduleId": "1",
+    "seatNumber": "A6"
+  },
+  {
+    "seatId": "7",
+    "scheduleId": "1",
+    "seatNumber": "A7"
+  },
+  {
+    "seatId": "8",
+    "scheduleId": "1",
+    "seatNumber": "A8"
+  },
+  {
+    "seatId": "9",
+    "scheduleId": "1",
+    "seatNumber": "A9"
+  },
+  {
+    "seatId": "10",
+    "scheduleId": "1",
+    "seatNumber": "A10"
+  },
+  {
+    "seatId": "11",
+    "scheduleId": "2",
+    "seatNumber": "A11"
+  },
+  {
+    "seatId": "12",
+    "scheduleId": "2",
+    "seatNumber": "A12"
+  },
+  {
+    "seatId": "13",
+    "scheduleId": "2",
+    "seatNumber": "A13"
+  },
+  {
+    "seatId": "14",
+    "scheduleId": "2",
+    "seatNumber": "A14"
+  },
+  {
+    "seatId": "15",
+    "scheduleId": "2",
+    "seatNumber": "A15"
+  },
+  {
+    "seatId": "16",
+    "scheduleId": "2",
+    "seatNumber": "A16"
+  },
+  {
+    "seatId": "17",
+    "scheduleId": "2",
+    "seatNumber": "A17"
+  },
+  {
+    "seatId": "18",
+    "scheduleId": "2",
+    "seatNumber": "A18"
+  },
+  {
+    "seatId": "19",
+    "scheduleId": "2",
+    "seatNumber": "A19"
+  },
+  {
+    "seatId": "20",
+    "scheduleId": "2",
+    "seatNumber": "A20"
+  },
+  {
+    "seatId": "21",
+    "scheduleId": "3",
+    "seatNumber": "B1"
+  },
+  {
+    "seatId": "22",
+    "scheduleId": "3",
+    "seatNumber": "B2"
+  },
+  {
+    "seatId": "23",
+    "scheduleId": "3",
+    "seatNumber": "B3"
+  },
+  {
+    "seatId": "24",
+    "scheduleId": "3",
+    "seatNumber": "B4"
+  },
+  {
+    "seatId": "25",
+    "scheduleId": "3",
+    "seatNumber": "B5"
+  },
+  {
+    "seatId": "26",
+    "scheduleId": "3",
+    "seatNumber": "B6"
+  },
+  {
+    "seatId": "27",
+    "scheduleId": "3",
+    "seatNumber": "B7"
+  },
+  {
+    "seatId": "28",
+    "scheduleId": "3",
+    "seatNumber": "B8"
+  },
+  {
+    "seatId": "29",
+    "scheduleId": "3",
+    "seatNumber": "B9"
+  },
+  {
+    "seatId": "30",
+    "scheduleId": "3",
+    "seatNumber": "B10"
+  },
+  {
+    "seatId": "31",
+    "scheduleId": "4",
+    "seatNumber": "B11"
+  },
+  {
+    "seatId": "32",
+    "scheduleId": "4",
+    "seatNumber": "B12"
+  },
+  {
+    "seatId": "33",
+    "scheduleId": "4",
+    "seatNumber": "B13"
+  },
+  {
+    "seatId": "34",
+    "scheduleId": "4",
+    "seatNumber": "B14"
+  },
+  {
+    "seatId": "35",
+    "scheduleId": "4",
+    "seatNumber": "B15"
+  },
+  {
+    "seatId": "36",
+    "scheduleId": "4",
+    "seatNumber": "B16"
+  },
+  {
+    "seatId": "37",
+    "scheduleId": "4",
+    "seatNumber": "B17"
+  },
+  {
+    "seatId": "38",
+    "scheduleId": "4",
+    "seatNumber": "B18"
+  },
+  {
+    "seatId": "39",
+    "scheduleId": "4",
+    "seatNumber": "B19"
+  },
+  {
+    "seatId": "40",
+    "scheduleId": "4",
+    "seatNumber": "B20"
+  },
+  {
+    "seatId": "41",
+    "scheduleId": "5",
+    "seatNumber": "C1"
+  },
+  {
+    "seatId": "42",
+    "scheduleId": "5",
+    "seatNumber": "C2"
+  },
+  {
+    "seatId": "43",
+    "scheduleId": "5",
+    "seatNumber": "C3"
+  },
+  {
+    "seatId": "44",
+    "scheduleId": "5",
+    "seatNumber": "C4"
+  },
+  {
+    "seatId": "45",
+    "scheduleId": "5",
+    "seatNumber": "C5"
+  },
+  {
+    "seatId": "46",
+    "scheduleId": "5",
+    "seatNumber": "C6"
+  },
+  {
+    "seatId": "47",
+    "scheduleId": "5",
+    "seatNumber": "C7"
+  },
+  {
+    "seatId": "48",
+    "scheduleId": "5",
+    "seatNumber": "C8"
+  },
+  {
+    "seatId": "49",
+    "scheduleId": "5",
+    "seatNumber": "C9"
+  },
+  {
+    "seatId": "50",
+    "scheduleId": "5",
+    "seatNumber": "C10"
+  },
+  {
+    "seatId": "51",
+    "scheduleId": "6",
+    "seatNumber": "C11"
+  },
+  {
+    "seatId": "52",
+    "scheduleId": "6",
+    "seatNumber": "C12"
+  },
+  {
+    "seatId": "53",
+    "scheduleId": "6",
+    "seatNumber": "C13"
+  },
+  {
+    "seatId": "54",
+    "scheduleId": "6",
+    "seatNumber": "C14"
+  },
+  {
+    "seatId": "55",
+    "scheduleId": "6",
+    "seatNumber": "C15"
+  },
+  {
+    "seatId": "56",
+    "scheduleId": "6",
+    "seatNumber": "C16"
+  },
+  {
+    "seatId": "57",
+    "scheduleId": "6",
+    "seatNumber": "C17"
+  },
+  {
+    "seatId": "58",
+    "scheduleId": "6",
+    "seatNumber": "C18"
+  },
+  {
+    "seatId": "59",
+    "scheduleId": "6",
+    "seatNumber": "C19"
+  },
+  {
+    "seatId": "60",
+    "scheduleId": "6",
+    "seatNumber": "C20"
+  },
+  {
+    "seatId": "61",
+    "scheduleId": "7",
+    "seatNumber": "D1"
+  },
+  {
+    "seatId": "62",
+    "scheduleId": "7",
+    "seatNumber": "D2"
+  },
+  {
+    "seatId": "63",
+    "scheduleId": "7",
+    "seatNumber": "D3"
+  },
+  {
+    "seatId": "64",
+    "scheduleId": "7",
+    "seatNumber": "D4"
+  },
+  {
+    "seatId": "65",
+    "scheduleId": "7",
+    "seatNumber": "D5"
+  },
+  {
+    "seatId": "66",
+    "scheduleId": "7",
+    "seatNumber": "D6"
+  },
+  {
+    "seatId": "67",
+    "scheduleId": "7",
+    "seatNumber": "D7"
+  },
+  {
+    "seatId": "68",
+    "scheduleId": "7",
+    "seatNumber": "D8"
+  },
+  {
+    "seatId": "69",
+    "scheduleId": "7",
+    "seatNumber": "D9"
+  },
+  {
+    "seatId": "70",
+    "scheduleId": "7",
+    "seatNumber": "D10"
+  },
+  {
+    "seatId": "71",
+    "scheduleId": "8",
+    "seatNumber": "D11"
+  },
+  {
+    "seatId": "72",
+    "scheduleId": "8",
+    "seatNumber": "D12"
+  },
+  {
+    "seatId": "73",
+    "scheduleId": "8",
+    "seatNumber": "D13"
+  },
+  {
+    "seatId": "74",
+    "scheduleId": "8",
+    "seatNumber": "D14"
+  },
+  {
+    "seatId": "75",
+    "scheduleId": "8",
+    "seatNumber": "D15"
+  },
+  {
+    "seatId": "76",
+    "scheduleId": "8",
+    "seatNumber": "D16"
+  },
+  {
+    "seatId": "77",
+    "scheduleId": "8",
+    "seatNumber": "D17"
+  },
+  {
+    "seatId": "78",
+    "scheduleId": "8",
+    "seatNumber": "D18"
+  },
+  {
+    "seatId": "79",
+    "scheduleId": "8",
+    "seatNumber": "D19"
+  },
+  {
+    "seatId": "80",
+    "scheduleId": "8",
+    "seatNumber": "D20"
+  },
+  {
+    "seatId": "81",
+    "scheduleId": "9",
+    "seatNumber": "E1"
+  },
+  {
+    "seatId": "82",
+    "scheduleId": "9",
+    "seatNumber": "E2"
+  },
+  {
+    "seatId": "83",
+    "scheduleId": "9",
+    "seatNumber": "E3"
+  },
+  {
+    "seatId": "84",
+    "scheduleId": "9",
+    "seatNumber": "E4"
+  },
+  {
+    "seatId": "85",
+    "scheduleId": "9",
+    "seatNumber": "E5"
+  },
+  {
+    "seatId": "86",
+    "scheduleId": "9",
+    "seatNumber": "E6"
+  },
+  {
+    "seatId": "87",
+    "scheduleId": "9",
+    "seatNumber": "E7"
+  },
+  {
+    "seatId": "88",
+    "scheduleId": "9",
+    "seatNumber": "E8"
+  },
+  {
+    "seatId": "89",
+    "scheduleId": "9",
+    "seatNumber": "E9"
+  },
+  {
+    "seatId": "90",
+    "scheduleId": "9",
+    "seatNumber": "E10"
+  },
+  {
+    "seatId": "91",
+    "scheduleId": "10",
+    "seatNumber": "E11"
+  },
+  {
+    "seatId": "92",
+    "scheduleId": "10",
+    "seatNumber": "E12"
+  },
+  {
+    "seatId": "93",
+    "scheduleId": "10",
+    "seatNumber": "E13"
+  },
+  {
+    "seatId": "94",
+    "scheduleId": "10",
+    "seatNumber": "E14"
+  },
+  {
+    "seatId": "95",
+    "scheduleId": "10",
+    "seatNumber": "E15"
+  },
+  {
+    "seatId": "96",
+    "scheduleId": "10",
+    "seatNumber": "E16"
+  },
+  {
+    "seatId": "97",
+    "scheduleId": "10",
+    "seatNumber": "E17"
+  },
+  {
+    "seatId": "98",
+    "scheduleId": "10",
+    "seatNumber": "E18"
+  },
+  {
+    "seatId": "99",
+    "scheduleId": "10",
+    "seatNumber": "E19"
+  },
+  {
+    "seatId": "100",
+    "scheduleId": "10",
+    "seatNumber": "E20"
+  }
+]
