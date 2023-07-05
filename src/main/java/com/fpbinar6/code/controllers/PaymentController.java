@@ -71,11 +71,14 @@ public class PaymentController {
         // Update payment data
         payment.setUser(user);
         payment.setPaymentMethod(paymentMethod);
+        payment.setPaymentStatus("paid");
 
         // Save the updated payment
         paymentRepository.save(payment);
 
-        return ResponseHandler.generateResponse(Constants.SUCCESS_EDIT_MSG, HttpStatus.OK, payment.getBookingCode());
+        var message = "Payment with booking code " + payment.getBookingCode() + " has been booked";
+
+        return ResponseHandler.generateResponse(Constants.SUCCESS_PAY_MSG, HttpStatus.OK, message);
     }
 
     @PutMapping("/payment/pay/{paymentId}")
