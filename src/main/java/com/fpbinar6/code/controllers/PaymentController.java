@@ -125,7 +125,13 @@ public class PaymentController {
             historyEntries.add(historyEntry);
         }
 
-        return ResponseEntity.ok(historyEntries);
+        if (historyEntries.isEmpty()) {
+            return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK,
+                    "No history found");
+        }
+
+        return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK,
+                historyEntries);
     }
 
     @GetMapping("/payment/search/{bookingCode}")

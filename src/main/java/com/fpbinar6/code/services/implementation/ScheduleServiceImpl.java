@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.fpbinar6.code.models.Schedule;
-import com.fpbinar6.code.models.dto.ScheduleRequestDTO;
 import com.fpbinar6.code.models.dto.ScheduleResponseDTO;
 import com.fpbinar6.code.repository.AirlineRepository;
 import com.fpbinar6.code.repository.AirportRepository;
@@ -59,28 +58,23 @@ public class ScheduleServiceImpl implements ScheduleService {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             departureTimeEnd = new Timestamp(calendar.getTimeInMillis());
         }
-
         if (className == null || className.isEmpty() || className.equals("")) {
-            List<Schedule> result = scheduleRepository.searchSchedulesWithoutClassName(departureTime,
-                    departureTimeStart, departureTimeEnd,
-                    departureAirportId,
-                    arrivalAirportId, airlineId);
+            List<Schedule> result = scheduleRepository.searchSchedulesWithoutClassName(departureTime, departureTimeStart,
+                    departureTimeEnd,
+                    departureAirportId, arrivalAirportId, airlineId);
 
             return result.stream()
                     .map(Schedule::convertToResponse)
                     .collect(Collectors.toList());
 
         } else {
-            List<Schedule> result = scheduleRepository.searchSchedules(departureTime, departureTimeStart,
-                    departureTimeEnd,
-                    departureAirportId,
-                    arrivalAirportId, airlineId, className);
+            List<Schedule> result = scheduleRepository.searchSchedules(departureTime, departureTimeStart, departureTimeEnd,
+                    departureAirportId, arrivalAirportId, airlineId, className);
 
             return result.stream()
                     .map(Schedule::convertToResponse)
                     .collect(Collectors.toList());
         }
-
     }
 
     @Override

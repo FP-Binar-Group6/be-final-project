@@ -44,4 +44,5 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Integer> {
                         @Param("departureAirportId") Integer departureAirportId,
                         @Param("arrivalAirportId") Integer arrivalAirportId,
                         @Param("airlineId") Integer airlineId);
+
 }

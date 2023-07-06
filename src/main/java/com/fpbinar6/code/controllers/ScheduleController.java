@@ -1,6 +1,5 @@
 package com.fpbinar6.code.controllers;
 
-import com.fpbinar6.code.models.dto.ScheduleRequestDTO;
 import com.fpbinar6.code.models.dto.ScheduleResponseDTO;
 import com.fpbinar6.code.repository.ScheduleRepository;
 
