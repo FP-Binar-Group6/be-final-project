@@ -60,13 +60,27 @@ public class ScheduleServiceImpl implements ScheduleService {
             departureTimeEnd = new Timestamp(calendar.getTimeInMillis());
         }
 
-        List<Schedule> result = scheduleRepository.searchSchedules(departureTime, departureTimeStart, departureTimeEnd,
-                departureAirportId,
-                arrivalAirportId, airlineId, className);
+        if (className == null || className.isEmpty() || className.equals("")) {
+            List<Schedule> result = scheduleRepository.searchSchedulesWithoutClassName(departureTime,
+                    departureTimeStart, departureTimeEnd,
+                    departureAirportId,
+                    arrivalAirportId, airlineId);
 
-        return result.stream()
-                .map(Schedule::convertToResponse)
-                .collect(Collectors.toList());
+            return result.stream()
+                    .map(Schedule::convertToResponse)
+                    .collect(Collectors.toList());
+
+        } else {
+            List<Schedule> result = scheduleRepository.searchSchedules(departureTime, departureTimeStart,
+                    departureTimeEnd,
+                    departureAirportId,
+                    arrivalAirportId, airlineId, className);
+
+            return result.stream()
+                    .map(Schedule::convertToResponse)
+                    .collect(Collectors.toList());
+        }
+
     }
 
     @Override
@@ -106,17 +120,20 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     // @Override
     // public ScheduleResponseDTO saveSchedule(ScheduleRequestDTO scheduleRequest) {
-    //     var airline = airlineRepository.findById(scheduleRequest.getAirlineId())
-    //             .orElseThrow(() -> new RuntimeException("Airline not found"));
-    //     var departureAirport = airportRepository.findById(scheduleRequest.getDepartureAirportId())
-    //             .orElseThrow(() -> new RuntimeException("Departure Airport not found"));
-    //     var arrivalAirport = airportRepository.findById(scheduleRequest.getArrivalAirportId())
-    //             .orElseThrow(() -> new RuntimeException("Arrival Airport not found"));
-    //     var kelas = classRepository.findById(scheduleRequest.getClassId())
-    //             .orElseThrow(() -> new RuntimeException("Class not found"));
-    //     var schedule = scheduleRequest.toSchedule(departureAirport, arrivalAirport, airline);
-    //     var result = scheduleRepository.save(schedule);
-    //     return result.convertToResponse();
+    // var airline = airlineRepository.findById(scheduleRequest.getAirlineId())
+    // .orElseThrow(() -> new RuntimeException("Airline not found"));
+    // var departureAirport =
+    // airportRepository.findById(scheduleRequest.getDepartureAirportId())
+    // .orElseThrow(() -> new RuntimeException("Departure Airport not found"));
+    // var arrivalAirport =
+    // airportRepository.findById(scheduleRequest.getArrivalAirportId())
+    // .orElseThrow(() -> new RuntimeException("Arrival Airport not found"));
+    // var kelas = classRepository.findById(scheduleRequest.getClassId())
+    // .orElseThrow(() -> new RuntimeException("Class not found"));
+    // var schedule = scheduleRequest.toSchedule(departureAirport, arrivalAirport,
+    // airline);
+    // var result = scheduleRepository.save(schedule);
+    // return result.convertToResponse();
     // }
 
     @Override
