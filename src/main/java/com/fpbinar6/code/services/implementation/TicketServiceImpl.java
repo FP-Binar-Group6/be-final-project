@@ -66,6 +66,7 @@ public class TicketServiceImpl implements TicketService {
             return TicketBookingResponseDTO.builder()
                     .bookingCode(bookingCode)
                     .totalPrice(totalPrice)
+                    .paymentStatus(savedPayment.getPaymentStatus())
                     .tickets(List.of(savedTicket.convertToResponse()))
                     .build();
         } else {
@@ -88,6 +89,7 @@ public class TicketServiceImpl implements TicketService {
             return TicketBookingResponseDTO.builder()
                     .bookingCode(bookingCode)
                     .totalPrice(totalPrice)
+                    .paymentStatus(savedPayment.getPaymentStatus())
                     .tickets(List.of(savedTicket.convertToResponse()))
                     .build();
 
@@ -154,6 +156,7 @@ public class TicketServiceImpl implements TicketService {
         TicketBookingResponseDTO bookingResponseDTO = TicketBookingResponseDTO.builder()
                 .tickets(ticketResponses)
                 .bookingCode(bookingCode)
+                .paymentStatus(savedPayment.getPaymentStatus())
                 .totalPrice(totalPrice)
                 .build();
 

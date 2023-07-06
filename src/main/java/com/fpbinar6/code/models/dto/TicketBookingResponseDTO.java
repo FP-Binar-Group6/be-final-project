@@ -15,4 +15,5 @@ public class TicketBookingResponseDTO {
     private List<TicketResponseDTO> tickets;
     private String bookingCode;
     private int totalPrice;
+    private String paymentStatus;
 }

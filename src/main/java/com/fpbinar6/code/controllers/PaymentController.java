@@ -53,11 +53,11 @@ public class PaymentController {
         return ResponseEntity.ok(savedTickets);
     }
 
-    @PutMapping("/payment/book/{paymentId}")
+    @PutMapping("/payment/book/{bookingCode}")
     public ResponseEntity<Object> updatePaymentData(
-            @PathVariable("paymentId") Integer paymentId,
+            @PathVariable("bookingCode") String bookingCode,
             @RequestBody PaymentRequestDTO paymentRequestDTO) {
-        Payment payment = paymentRepository.findById(paymentId)
+        Payment payment = paymentRepository.findByBookingCode(bookingCode)
                 .orElseThrow(() -> new RuntimeException("Payment not found"));
 
         User user = userRepository.findById(paymentRequestDTO.getUserId())
@@ -65,26 +65,36 @@ public class PaymentController {
 
         PaymentMethod paymentMethod = paymentMethodRepository.findById(paymentRequestDTO.getPaymentMethodId())
                 .orElseThrow(() -> new RuntimeException("Payment method not found"));
-
+        if (payment.getUser() != null && payment.getPaymentMethod() != null) {
+            throw new RuntimeException("Payment already booked");
+        }
         // Update payment data
         payment.setUser(user);
         payment.setPaymentMethod(paymentMethod);
+        payment.setPaymentStatus("paid");
 
         // Save the updated payment
         paymentRepository.save(payment);
 
-        return ResponseHandler.generateResponse(Constants.SUCCESS_EDIT_MSG, HttpStatus.OK, payment.getBookingCode());
+        var message = "Payment with booking code " + payment.getBookingCode() + " has been booked";
+
+        return ResponseHandler.generateResponse(Constants.SUCCESS_PAY_MSG, HttpStatus.OK, message);
     }
 
     @PutMapping("/payment/pay/{paymentId}")
     public ResponseEntity<Object> markPaymentAsPaid(@PathVariable int paymentId) {
         Optional<Payment> paymentPay = paymentRepository.findById(paymentId);
+        var message = "";
         if (paymentPay.isPresent()) {
             Payment payment = paymentPay.get();
-            payment.setPaymentStatus("paid");
-            paymentRepository.save(payment);
+            if (payment.getPaymentStatus().equals("paid")) {
+                message = "Payment with booking code " + payment.getBookingCode() + " already been paid!";
+            } else {
+                payment.setPaymentStatus("paid");
+                paymentRepository.save(payment);
+                message = "Payment with booking code " + payment.getBookingCode() + " has been paid";
+            }
 
-            var message = "Payment with booking code " + payment.getBookingCode() + " has been paid";
             return ResponseHandler.generateResponse(Constants.SUCCESS_PAY_MSG, HttpStatus.OK,
                     message);
         } else {
