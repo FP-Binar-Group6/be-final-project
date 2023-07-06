@@ -29,6 +29,7 @@ import com.fpbinar6.code.repository.PaymentMethodRepository;
 import com.fpbinar6.code.repository.PaymentRepository;
 import com.fpbinar6.code.repository.TicketRepository;
 import com.fpbinar6.code.repository.UserRepository;
+import com.fpbinar6.code.services.NotificationService;
 import com.fpbinar6.code.services.PaymentService;
 import com.fpbinar6.code.utils.Constants;
 import com.fpbinar6.code.utils.ResponseHandler;
@@ -45,6 +46,7 @@ public class PaymentController {
     final UserRepository userRepository;
     final PaymentMethodRepository paymentMethodRepository;
     final TicketRepository ticketRepository;
+    final NotificationService notificationService;
 
     @PostMapping("/payment/tickets")
     public ResponseEntity<List<TicketResponseDTO>> savePaymentAndTickets(
@@ -77,6 +79,9 @@ public class PaymentController {
         paymentRepository.save(payment);
 
         var message = "Payment with booking code " + payment.getBookingCode() + " has been booked";
+
+        //notification
+        notificationService.createNotification(user.getUserId(), message);
 
         return ResponseHandler.generateResponse(Constants.SUCCESS_PAY_MSG, HttpStatus.OK, message);
     }
