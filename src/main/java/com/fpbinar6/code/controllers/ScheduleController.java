@@ -38,14 +38,15 @@ public class ScheduleController {
             @RequestParam(value = "departureAirportId", required = false) Integer departureAirportId,
             @RequestParam(value = "arrivalAirportId", required = false) Integer arrivalAirportId,
             @RequestParam(value = "airlineId", required = false) Integer airlineId,
-            @RequestParam(value = "className", required = false) String className) {
+            @RequestParam(value = "className", required = false) String className, 
+            @RequestParam(value = "totalPerson", required = false) Integer totalPerson) {
         Timestamp departureTime = null;
         if (departureDate != null) {
             departureTime = Timestamp.valueOf(departureDate.atStartOfDay());
         }
 
         List<ScheduleResponseDTO> schedules = scheduleService.searchSchedules(departureTime, departureAirportId,
-                arrivalAirportId, airlineId, className);
+                arrivalAirportId, airlineId, className, totalPerson);
         return ResponseHandler.generateResponse(Constants.SUCCESS_RETRIEVE_MSG, HttpStatus.OK, schedules);
     }
 

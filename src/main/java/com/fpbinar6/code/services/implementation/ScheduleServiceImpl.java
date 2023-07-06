@@ -43,7 +43,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public List<ScheduleResponseDTO> searchSchedules(Timestamp departureTime, Integer departureAirportId,
-            Integer arrivalAirportId, Integer airlineId, String className) {
+            Integer arrivalAirportId, Integer airlineId, String className, Integer totalPerson) {
         Timestamp departureTimeStart = null;
         Timestamp departureTimeEnd = null;
 
@@ -61,7 +61,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         if (className == null || className.isEmpty() || className.equals("")) {
             List<Schedule> result = scheduleRepository.searchSchedulesWithoutClassName(departureTime, departureTimeStart,
                     departureTimeEnd,
-                    departureAirportId, arrivalAirportId, airlineId);
+                    departureAirportId, arrivalAirportId, airlineId, totalPerson);
 
             return result.stream()
                     .map(Schedule::convertToResponse)
@@ -69,7 +69,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         } else {
             List<Schedule> result = scheduleRepository.searchSchedules(departureTime, departureTimeStart, departureTimeEnd,
-                    departureAirportId, arrivalAirportId, airlineId, className);
+                    departureAirportId, arrivalAirportId, airlineId, className, totalPerson);
 
             return result.stream()
                     .map(Schedule::convertToResponse)
