@@ -24,6 +24,7 @@ public class TicketRequestDTO {
     private String idCardNumber;
     private Integer seatId;
     private int scheduleId;
+    private int userId;
 
     public Ticket toTicket(Seat seat, Schedule schedule){
         return Ticket.builder()

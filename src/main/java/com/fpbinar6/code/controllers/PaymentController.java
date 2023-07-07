@@ -62,16 +62,12 @@ public class PaymentController {
         Payment payment = paymentRepository.findByBookingCode(bookingCode)
                 .orElseThrow(() -> new RuntimeException("Payment not found"));
 
-        User user = userRepository.findById(paymentRequestDTO.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
         PaymentMethod paymentMethod = paymentMethodRepository.findById(paymentRequestDTO.getPaymentMethodId())
                 .orElseThrow(() -> new RuntimeException("Payment method not found"));
         if (payment.getUser() != null && payment.getPaymentMethod() != null) {
             throw new RuntimeException("Payment already booked");
         }
         // Update payment data
-        payment.setUser(user);
         payment.setPaymentMethod(paymentMethod);
         payment.setPaymentStatus("paid");
 
@@ -81,7 +77,7 @@ public class PaymentController {
         var message = "Payment with booking code " + payment.getBookingCode() + " has been booked";
 
         //notification
-        notificationService.createNotification(user.getUserId(), message);
+        notificationService.createNotification(payment.getUser().getUserId(), message);
 
         return ResponseHandler.generateResponse(Constants.SUCCESS_PAY_MSG, HttpStatus.OK, message);
     }

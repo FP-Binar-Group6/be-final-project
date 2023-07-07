@@ -17,6 +17,7 @@ import com.fpbinar6.code.repository.PaymentRepository;
 import com.fpbinar6.code.repository.ScheduleRepository;
 import com.fpbinar6.code.repository.SeatRepository;
 import com.fpbinar6.code.repository.TicketRepository;
+import com.fpbinar6.code.repository.UserRepository;
 import com.fpbinar6.code.services.TicketService;
 import com.fpbinar6.code.utils.GenerateRandomString;
 
@@ -30,6 +31,7 @@ public class TicketServiceImpl implements TicketService {
     final SeatRepository seatRepository;
     final ScheduleRepository scheduleRepository;
     final PaymentRepository paymentRepository;
+    final UserRepository userRepository;
 
     @Override
     public TicketResponseDTO getTicketById(Long id) {
@@ -45,6 +47,7 @@ public class TicketServiceImpl implements TicketService {
         String bookingCode = GenerateRandomString.generateRandomString(6);
         Payment payment = Payment.builder()
                 .bookingCode(bookingCode)
+                .user(userRepository.findById(ticketRequest.getUserId()).orElseThrow(() -> new RuntimeException("User not found")))
                 .build();
         Payment savedPayment = paymentRepository.save(payment);
         if (ticketRequest.getSeatId() != null) {
@@ -103,6 +106,7 @@ public class TicketServiceImpl implements TicketService {
         String bookingCode = GenerateRandomString.generateRandomString(6);
         Payment payment = Payment.builder()
                 .bookingCode(bookingCode)
+                .user(userRepository.findById(ticketRequests.get(0).getUserId()).orElseThrow(() -> new RuntimeException("User not found")))
                 .build();
         Payment savedPayment = paymentRepository.save(payment);
 

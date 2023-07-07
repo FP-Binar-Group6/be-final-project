@@ -12,18 +12,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaymentRequestDTO {
-    private int userId;
     private int paymentMethodId;
 
     public Payment toPayment() {
-        User user = new User();
-        user.setUserId(this.userId);
 
         PaymentMethod paymentMethod = new PaymentMethod();
         paymentMethod.setPaymentMethodId(this.paymentMethodId);
 
         return Payment.builder()
-                .user(user)
                 .paymentMethod(paymentMethod)
                 .build();
     }
