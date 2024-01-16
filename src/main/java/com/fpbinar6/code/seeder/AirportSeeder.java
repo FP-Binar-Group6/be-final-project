@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-
 @Order(2)
 public class AirportSeeder implements CommandLineRunner {
 

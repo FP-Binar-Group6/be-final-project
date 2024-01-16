@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-
 @Order(5)
 public class ScheduleSeeder implements CommandLineRunner {
 

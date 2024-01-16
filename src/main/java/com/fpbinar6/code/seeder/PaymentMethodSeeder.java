@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-
 @Order(4)
 public class PaymentMethodSeeder implements CommandLineRunner {
     private final PaymentMethodRepository paymentMethodRepository;
